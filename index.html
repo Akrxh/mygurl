@@ -2,34 +2,38 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>my Gwen ♡</title>
+<title>my Gwen</title>
+
+<meta name="theme-color" content="#070707">
+<meta name="description" content="A little birthday experience for Gwen.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@0;400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
 
 :root{
-    --bg:#080808;
-    --bg2:#0e0e10;
-    --card:rgba(255,255,255,.055);
-    --card2:rgba(255,255,255,.08);
-    --line:rgba(255,255,255,.11);
-    --white:#f8f5f2;
-    --muted:#999395;
-    --rose:#ef9eae;
-    --rose2:#f5c8d0;
-    --gold:#d9b879;
-    --gold2:#ead6a9;
-    --purple:#bdb2ee;
-    --danger:#ff7187;
-    --radius:26px;
+    --black:#050505;
+    --black2:#0b0b0d;
+    --panel:rgba(255,255,255,.055);
+    --panel2:rgba(255,255,255,.075);
+    --line:rgba(255,255,255,.10);
+    --white:#f7f4f0;
+    --muted:#aaa5a7;
+    --rose:#e8a0b4;
+    --rose2:#ffcad7;
+    --gold:#e8c78d;
+    --lav:#c4b5fd;
+    --green:#9ee3bd;
+    --danger:#ff8585;
 }
 
 *{
@@ -43,28 +47,18 @@ html{
 }
 
 body{
-    min-height:100vh;
-    overflow-x:hidden;
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(239,158,174,.07),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 30%,
-            rgba(217,184,121,.055),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(189,178,238,.045),
-            transparent 30%
-        ),
-        var(--bg);
+        radial-gradient(circle at 15% 10%,rgba(232,160,180,.10),transparent 28%),
+        radial-gradient(circle at 85% 25%,rgba(196,181,253,.07),transparent 28%),
+        radial-gradient(circle at 50% 100%,rgba(232,199,141,.06),transparent 30%),
+        var(--black);
     color:var(--white);
     font-family:Inter,sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
 }
+
+/* subtle manga grain */
 
 body::before{
     content:"";
@@ -72,265 +66,249 @@ body::before{
     inset:0;
     pointer-events:none;
     z-index:9999;
-    opacity:.025;
+    opacity:.035;
     background-image:
-        radial-gradient(#fff 1px,transparent 1px);
-    background-size:8px 8px;
+        radial-gradient(#fff .6px,transparent .6px);
+    background-size:5px 5px;
 }
 
-button,
-input,
-textarea,
-select{
-    font:inherit;
+/* background glow */
+
+.bg-orb{
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    filter:blur(110px);
+    opacity:.10;
+    pointer-events:none;
+    z-index:-1;
 }
 
-button{
-    cursor:pointer;
+.orb-one{
+    background:var(--rose);
+    top:-180px;
+    left:-160px;
 }
 
-img{
-    max-width:100%;
+.orb-two{
+    background:var(--lav);
+    right:-200px;
+    top:30%;
+}
+
+.orb-three{
+    background:var(--gold);
+    bottom:-250px;
+    left:35%;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar{
+    width:6px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#292529;
+    border-radius:99px;
+}
+
+/* general */
+
+.container{
+    width:min(1120px,calc(100% - 32px));
+    margin:auto;
+}
+
+.glass{
+    background:var(--panel);
+    border:1px solid var(--line);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.serif{
+    font-family:"DM Serif Display",serif;
+}
+
+.playfair{
+    font-family:"Playfair Display",serif;
+}
+
+.muted{
+    color:var(--muted);
 }
 
 .hidden{
     display:none!important;
 }
 
-.container{
-    width:min(1080px,calc(100% - 34px));
-    margin:auto;
-}
-
-section{
-    padding:95px 0;
-}
-
-.label{
-    color:var(--gold);
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    margin-bottom:15px;
-}
-
-.title{
-    font-family:"DM Serif Display",serif;
-    font-weight:400;
-    font-size:clamp(40px,7vw,70px);
-    line-height:.95;
-}
-
-.subtitle{
-    max-width:570px;
-    margin-top:18px;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.8;
-}
-
-.glass{
-    background:var(--card);
-    border:1px solid var(--line);
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-    border-radius:var(--radius);
-}
-
-/* =========================================================
-   TOP BAR
-========================================================= */
+/* top navigation */
 
 .topbar{
     position:fixed;
-    z-index:200;
-    top:16px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(1080px,calc(100% - 28px));
-    height:60px;
-    padding:0 20px;
+    top:0;
+    left:0;
+    right:0;
+    height:74px;
+    z-index:500;
+    background:rgba(5,5,5,.62);
+    border-bottom:1px solid rgba(255,255,255,.07);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+}
+
+.topbar-inner{
+    height:100%;
+    width:min(1120px,calc(100% - 32px));
+    margin:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    border:1px solid var(--line);
-    border-radius:20px;
-    background:rgba(13,13,15,.76);
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 .brand{
-    color:white;
     font-family:"DM Serif Display",serif;
-    font-size:22px;
+    font-size:25px;
+    color:#fff;
+    cursor:pointer;
     user-select:none;
-    cursor:default;
+    letter-spacing:-.03em;
+    transition:.25s ease;
+}
+
+.brand:hover{
+    color:var(--rose2);
 }
 
 .brand span{
     color:var(--rose);
 }
 
-.nav{
+.navlinks{
     display:flex;
-    gap:5px;
+    gap:24px;
+    align-items:center;
 }
 
-.nav button{
+.navlinks button{
     border:0;
-    background:transparent;
-    color:#929092;
-    font-size:10px;
-    padding:9px 12px;
-    border-radius:12px;
-    transition:.25s;
+    background:none;
+    color:#aaa;
+    font-size:12px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.nav button:hover{
-    color:#fff;
-    background:rgba(255,255,255,.07);
+.navlinks button:hover{
+    color:white;
 }
 
 @media(max-width:650px){
-
-    .topbar{
-        height:56px;
-    }
-
-    .brand{
-        font-size:19px;
-    }
-
-    .nav button{
+    .navlinks{
         display:none;
-    }
-
-    .nav button:last-child{
-        display:block;
     }
 }
 
-/* =========================================================
-   ENTRY
-========================================================= */
+/* entry */
 
 #entry{
     position:fixed;
     inset:0;
-    z-index:1000;
+    z-index:2000;
+    background:#050505;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#060607;
-    transition:opacity 1s,visibility 1s;
+    padding:20px;
 }
 
-#entry.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.entry-inner{
-    width:min(400px,calc(100% - 40px));
+.entry-box{
+    width:min(440px,100%);
     text-align:center;
 }
 
-.entry-small{
-    color:var(--gold);
-    font-size:9px;
+.entry-mini{
+    font-size:10px;
+    letter-spacing:.28em;
     text-transform:uppercase;
-    letter-spacing:.3em;
+    color:#777;
     margin-bottom:20px;
 }
 
 .entry-title{
     font-family:"DM Serif Display",serif;
-    font-size:clamp(65px,14vw,105px);
-    line-height:.82;
+    font-size:clamp(54px,13vw,90px);
+    line-height:.9;
+    margin-bottom:18px;
 }
 
-.entry-title em{
+.entry-title span{
     color:var(--rose);
 }
 
-.entry-note{
-    color:var(--muted);
-    font-size:12px;
+.entry-sub{
+    color:#888;
+    font-size:13px;
     line-height:1.8;
-    margin:28px 0;
+    margin-bottom:30px;
 }
 
-.pass-box{
+.pass-wrap{
     display:flex;
-    padding:6px;
-    background:rgba(255,255,255,.045);
-    border:1px solid var(--line);
-    border-radius:16px;
+    gap:9px;
+    justify-content:center;
 }
 
-.pass-box input{
-    flex:1;
-    min-width:0;
-    border:0;
-    outline:0;
-    background:transparent;
+.pass-input{
+    width:52px;
+    height:58px;
+    text-align:center;
+    background:#111;
     color:white;
-    padding:12px;
+    border:1px solid #2a2a2a;
+    border-radius:14px;
+    font-size:20px;
+    outline:none;
+    transition:.2s;
 }
 
-.primary{
-    border:0;
-    border-radius:13px;
-    padding:12px 18px;
-    background:var(--white);
-    color:#111;
+.pass-input:focus{
+    border-color:var(--rose);
+    box-shadow:0 0 0 3px rgba(232,160,180,.08);
+}
+
+.entry-error{
+    color:#e98b9d;
     font-size:11px;
-    font-weight:700;
-    transition:.25s;
-}
-
-.primary:hover{
-    transform:translateY(-2px);
-    box-shadow:0 15px 35px rgba(255,255,255,.1);
-}
-
-.secondary{
-    border:1px solid var(--line);
-    border-radius:13px;
-    padding:12px 18px;
-    background:var(--card);
-    color:white;
-    font-size:11px;
-}
-
-.error{
-    color:var(--danger);
+    margin-top:15px;
     min-height:16px;
-    font-size:10px;
-    margin-top:10px;
 }
 
-/* =========================================================
-   COUNTDOWN INTRO
-========================================================= */
+/* countdown */
 
-#intro{
+#countdown{
     position:fixed;
     inset:0;
-    z-index:900;
+    z-index:1900;
     display:none;
     align-items:center;
     justify-content:center;
-    background:#080808;
+    background:#050505;
 }
 
 .count-number{
     font-family:"DM Serif Display",serif;
-    font-size:clamp(100px,25vw,220px);
-    animation:countPop .8s ease;
+    font-size:clamp(100px,25vw,230px);
+    animation:countPop .8s ease forwards;
 }
 
 @keyframes countPop{
@@ -340,688 +318,555 @@ section{
     }
     50%{
         opacity:1;
-        transform:scale(1.06);
+        transform:scale(1.05);
     }
     100%{
-        transform:scale(1);
+        opacity:0;
+        transform:scale(1.25);
     }
 }
 
-/* =========================================================
-   MAIN
-========================================================= */
+/* main */
 
-#main{
+#app{
     opacity:0;
-    transition:opacity 1.2s;
-    padding-top:75px;
+    transition:opacity 1s ease;
 }
 
-#main.visible{
+#app.visible{
     opacity:1;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* hero */
 
 .hero{
-    min-height:88vh;
+    min-height:100vh;
     display:flex;
     align-items:center;
+    justify-content:center;
+    padding:120px 0 80px;
     position:relative;
-    overflow:hidden;
 }
 
-.hero-content{
-    position:relative;
-    z-index:2;
+.hero-inner{
+    width:min(850px,100%);
+    text-align:center;
 }
 
 .hero-kicker{
-    color:var(--gold);
-    text-transform:uppercase;
+    font-size:11px;
     letter-spacing:.3em;
-    font-size:9px;
-    margin-bottom:24px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:25px;
 }
 
 .hero-title{
     font-family:"DM Serif Display",serif;
-    font-weight:400;
-    font-size:clamp(68px,12vw,150px);
-    line-height:.77;
-    letter-spacing:-.045em;
+    font-size:clamp(70px,13vw,145px);
+    line-height:.82;
+    letter-spacing:-.055em;
 }
 
 .hero-title .pink{
     color:var(--rose);
 }
 
-.hero-title .italic{
-    font-style:italic;
-}
-
-.hero-desc{
-    margin-top:38px;
-    max-width:440px;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.8;
+.hero-description{
+    width:min(580px,100%);
+    margin:32px auto 0;
+    color:#aaa;
+    line-height:1.9;
+    font-size:14px;
 }
 
 .hero-date{
-    margin-top:23px;
-    color:var(--gold2);
-    font-size:9px;
-    letter-spacing:.2em;
-}
-
-.hero-ring{
-    position:absolute;
-    right:3%;
-    top:50%;
-    transform:translateY(-50%);
-    width:330px;
-    height:330px;
-    border:1px solid rgba(239,158,174,.12);
-    border-radius:50%;
-    animation:ringPulse 4s ease-in-out infinite;
-}
-
-.hero-ring::after{
-    content:"♡";
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:Georgia,serif;
-    color:rgba(239,158,174,.15);
-    font-size:230px;
-}
-
-@keyframes ringPulse{
-    0%,100%{
-        transform:translateY(-50%) scale(1);
-    }
-    50%{
-        transform:translateY(-50%) scale(1.06);
-    }
-}
-
-.countdown{
-    display:flex;
-    gap:8px;
+    display:inline-flex;
     margin-top:35px;
-}
-
-.time{
-    min-width:66px;
-    padding:12px 9px;
-    text-align:center;
+    padding:10px 17px;
+    border-radius:100px;
     border:1px solid var(--line);
-    border-radius:15px;
-    background:var(--card);
+    background:rgba(255,255,255,.035);
+    color:#aaa;
+    font-size:11px;
+    letter-spacing:.12em;
 }
 
-.time b{
-    display:block;
-    font-family:"DM Serif Display",serif;
-    font-size:26px;
-    font-weight:400;
+/* floating hearts */
+
+.heart-float{
+    position:fixed;
+    pointer-events:none;
+    z-index:100;
+    font-size:18px;
+    animation:heartRise 5s linear forwards;
 }
 
-.time span{
-    color:#666;
-    font-size:7px;
-    letter-spacing:.15em;
+@keyframes heartRise{
+    0%{
+        transform:translateY(30px) scale(.6) rotate(-10deg);
+        opacity:0;
+    }
+    15%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-100vh) scale(1.3) rotate(15deg);
+        opacity:0;
+    }
+}
+
+/* sections */
+
+section{
+    padding:110px 0;
+}
+
+.section-head{
+    margin-bottom:42px;
+}
+
+.section-eyebrow{
+    color:var(--rose);
     text-transform:uppercase;
+    letter-spacing:.25em;
+    font-size:10px;
+    margin-bottom:12px;
 }
 
-@media(max-width:700px){
-
-    .hero{
-        min-height:80vh;
-    }
-
-    .hero-ring{
-        width:190px;
-        height:190px;
-        right:-70px;
-        top:65%;
-    }
-
-    .hero-ring::after{
-        font-size:140px;
-    }
+.section-title{
+    font-family:"DM Serif Display",serif;
+    font-size:clamp(38px,6vw,66px);
+    line-height:1;
 }
 
-/* =========================================================
-   CAKE
-========================================================= */
+.section-copy{
+    color:#888;
+    max-width:600px;
+    line-height:1.8;
+    font-size:13px;
+    margin-top:15px;
+}
 
-.center{
+/* letter */
+
+.letter-card{
+    padding:42px;
+    border-radius:30px;
+    min-height:180px;
+}
+
+.letter-content{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(19px,3vw,27px);
+    line-height:1.75;
+    color:#ddd;
+    white-space:pre-wrap;
+}
+
+.letter-empty{
+    color:#666;
+    font-size:13px;
+    font-family:Inter,sans-serif;
     text-align:center;
+    padding:30px;
 }
 
-.cake-stage{
-    width:min(450px,100%);
-    height:300px;
-    margin:60px auto 20px;
+/* cake */
+
+.cake-wrap{
     display:flex;
-    align-items:flex-end;
     justify-content:center;
+    align-items:center;
+    min-height:420px;
     position:relative;
 }
 
 .cake{
-    width:250px;
     position:relative;
+    width:280px;
+    height:230px;
+}
+
+.cake-shadow{
+    position:absolute;
+    width:330px;
+    height:35px;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.6);
+    filter:blur(15px);
+    border-radius:50%;
+}
+
+.cake-bottom{
+    position:absolute;
+    width:270px;
+    height:85px;
+    left:5px;
+    bottom:28px;
+    border-radius:18px 18px 28px 28px;
+    background:
+        linear-gradient(180deg,#a96876,#65313c);
+    box-shadow:
+        inset 0 8px 15px rgba(255,255,255,.08),
+        0 15px 35px rgba(0,0,0,.35);
+}
+
+.cake-middle{
+    position:absolute;
+    width:245px;
+    height:65px;
+    left:17px;
+    bottom:92px;
+    border-radius:16px;
+    background:linear-gradient(180deg,#e6b5c0,#a86172);
 }
 
 .cake-top{
-    height:80px;
-    border-radius:50% 50% 20px 20px;
-    background:linear-gradient(160deg,#f4d1d6,#b66b78);
-}
-
-.cake-body{
-    height:105px;
-    margin-top:-15px;
-    background:linear-gradient(
-        90deg,
-        #d99aa5,
-        #f0c0c6,
-        #bd7783
-    );
-    border-radius:0 0 25px 25px;
-}
-
-.cake-base{
-    height:30px;
-    margin-top:8px;
-    border-radius:12px;
-    background:#c38d91;
+    position:absolute;
+    width:255px;
+    height:48px;
+    left:12px;
+    bottom:142px;
+    border-radius:50%;
+    background:#f1c6cf;
+    box-shadow:inset 0 -7px 0 rgba(120,50,70,.18);
 }
 
 .candle{
     position:absolute;
-    bottom:170px;
-    width:14px;
-    height:65px;
-    border-radius:6px;
-    background:repeating-linear-gradient(
-        45deg,
-        #fff,
-        #fff 6px,
-        #d9b879 6px,
-        #d9b879 10px
-    );
+    width:15px;
+    height:60px;
+    bottom:175px;
+    border-radius:5px;
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #fff 0 7px,
+            #e5a2b5 7px 14px
+        );
 }
 
-.candle:nth-child(1){
-    left:80px;
+.candle.one{
+    left:78px;
 }
 
-.candle:nth-child(2){
-    left:118px;
-    height:78px;
+.candle.two{
+    left:133px;
 }
 
-.candle:nth-child(3){
-    right:80px;
+.candle.three{
+    left:188px;
 }
 
 .flame{
     position:absolute;
-    width:15px;
-    height:25px;
-    left:50%;
-    top:-27px;
-    transform:translateX(-50%);
-    background:radial-gradient(
-        circle at 50% 75%,
-        #fff 0 12%,
-        #ffe7a0 25%,
-        #ffb347 48%,
-        #ef6675 70%,
-        transparent 72%
-    );
-    filter:drop-shadow(
-        0 0 10px rgba(255,173,91,.8)
-    );
-    animation:flameMove .55s ease-in-out infinite alternate;
+    width:19px;
+    height:28px;
+    left:-2px;
+    top:-29px;
+    background:linear-gradient(180deg,#fff2a0,#ffb03d 55%,#ff6577);
+    border-radius:60% 40% 60% 40%;
+    transform-origin:50% 100%;
+    animation:flameSway .75s ease-in-out infinite alternate;
+    filter:
+        drop-shadow(0 0 8px #ffbd55)
+        drop-shadow(0 0 17px rgba(255,100,100,.55));
 }
 
-@keyframes flameMove{
+.candle.two .flame{
+    animation-delay:-.18s;
+}
 
+.candle.three .flame{
+    animation-delay:-.38s;
+}
+
+@keyframes flameSway{
     0%{
-        transform:translateX(-50%) rotate(-13deg) scaleX(.88);
+        transform:rotate(-9deg) scaleX(.92);
     }
-
-    25%{
-        transform:translateX(-50%) rotate(8deg) scaleX(1.05);
-    }
-
-    50%{
-        transform:translateX(-50%) rotate(-5deg) scaleX(.9);
-    }
-
-    75%{
-        transform:translateX(-50%) rotate(14deg) scaleX(1.08);
-    }
-
     100%{
-        transform:translateX(-50%) rotate(-10deg) scaleX(.9);
+        transform:rotate(9deg) scaleX(1.05);
     }
 }
 
-/* =========================================================
-   GIFTS
-========================================================= */
+.candle.blown .flame{
+    animation:none;
+    opacity:0;
+    transform:translateY(-20px) scale(.2);
+    transition:.4s;
+}
 
-.grid3{
+.smoke{
+    position:absolute;
+    width:10px;
+    height:35px;
+    border-radius:50%;
+    border-left:2px solid rgba(255,255,255,.3);
+    left:4px;
+    top:-40px;
+    opacity:0;
+}
+
+.candle.blown .smoke{
+    animation:smoke 1.5s ease forwards;
+}
+
+@keyframes smoke{
+    0%{
+        opacity:0;
+        transform:translateY(5px);
+    }
+    30%{
+        opacity:.6;
+    }
+    100%{
+        opacity:0;
+        transform:translate(-8px,-45px) rotate(20deg);
+    }
+}
+
+.blow-btn{
+    display:block;
+    margin:5px auto 0;
+    padding:13px 21px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    background:rgba(255,255,255,.04);
+    color:#ddd;
+    cursor:pointer;
+    font-size:12px;
+    transition:.2s;
+}
+
+.blow-btn:hover{
+    background:rgba(255,255,255,.09);
+    transform:translateY(-2px);
+}
+
+/* gifts */
+
+.gift-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-top:45px;
+    gap:16px;
 }
 
 .gift{
-    min-height:240px;
+    min-height:230px;
+    border-radius:26px;
     padding:28px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    transition:.35s;
+    transition:.35s ease;
+    cursor:pointer;
 }
 
 .gift:hover{
-    transform:translateY(-7px);
-    border-color:rgba(239,158,174,.35);
+    transform:translateY(-6px);
+    background:var(--panel2);
 }
 
-.gift-num{
-    color:var(--gold);
-    font-size:9px;
+.gift-number{
+    font-size:10px;
     letter-spacing:.2em;
+    color:#777;
 }
 
 .gift-icon{
-    font-size:48px;
+    font-size:35px;
 }
 
-.gift h3{
+.gift-title{
     font-family:"DM Serif Display",serif;
     font-size:28px;
-    font-weight:400;
 }
 
-.gift p{
-    color:var(--muted);
-    font-size:11px;
-    line-height:1.6;
-    margin-top:7px;
+.gift-text{
+    color:#888;
+    font-size:12px;
+    line-height:1.7;
 }
 
 @media(max-width:750px){
-    .grid3{
+    .gift-grid{
         grid-template-columns:1fr;
     }
 }
 
-/* =========================================================
-   GALLERY
-========================================================= */
+/* gallery */
 
-.gallery{
-    margin-top:45px;
+.gallery-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-auto-rows:170px;
-    gap:10px;
+    grid-template-columns:repeat(12,1fr);
+    gap:12px;
 }
 
-.gallery-item{
+.photo-card{
+    min-height:260px;
+    border-radius:24px;
     overflow:hidden;
     position:relative;
-    border-radius:18px;
+    background:#101010;
     border:1px solid var(--line);
-    background:#111;
 }
 
-.gallery-item:first-child{
-    grid-column:span 2;
-    grid-row:span 2;
+.photo-card:nth-child(1){
+    grid-column:span 7;
 }
 
-.gallery-item img{
+.photo-card:nth-child(2){
+    grid-column:span 5;
+}
+
+.photo-card:nth-child(3){
+    grid-column:span 5;
+}
+
+.photo-card:nth-child(4){
+    grid-column:span 7;
+}
+
+.photo-card img{
     width:100%;
     height:100%;
+    min-height:260px;
     object-fit:cover;
     display:block;
-    transition:.7s;
+    transition:.5s ease;
 }
 
-.gallery-item:hover img{
-    transform:scale(1.06);
+.photo-card:hover img{
+    transform:scale(1.04);
 }
 
-.empty-gallery{
+.no-photos{
     grid-column:1/-1;
-    min-height:220px;
+    padding:65px 20px;
+    text-align:center;
+    border-radius:26px;
+    color:#666;
+    border:1px dashed #292929;
+}
+
+@media(max-width:650px){
+    .photo-card,
+    .photo-card:nth-child(n){
+        grid-column:span 12;
+    }
+}
+
+/* reason card */
+
+.reason-area{
     display:flex;
-    align-items:center;
     justify-content:center;
-    flex-direction:column;
-    gap:10px;
-    border:1px dashed var(--line);
-    border-radius:22px;
-    color:#777;
-    text-align:center;
+    perspective:1200px;
 }
 
-.empty-gallery strong{
-    color:#aaa;
-    font-family:"DM Serif Display",serif;
-    font-size:25px;
-    font-weight:400;
-}
-
-.empty-gallery span{
-    font-size:10px;
-}
-
-@media(max-width:700px){
-
-    .gallery{
-        grid-template-columns:repeat(2,1fr);
-        grid-auto-rows:150px;
-    }
-
-    .gallery-item:first-child{
-        grid-column:span 2;
-    }
-}
-
-/* =========================================================
-   LETTER
-========================================================= */
-
-.letter-card{
-    max-width:760px;
-    margin:45px auto 0;
-    padding:45px;
-}
-
-.letter-card.empty{
-    display:none;
-}
-
-.letter-content{
-    white-space:pre-wrap;
-    font-family:"Playfair Display",serif;
-    color:#e7dfdc;
-    font-size:clamp(17px,2.5vw,22px);
-    line-height:1.9;
-}
-
-.letter-sign{
-    margin-top:28px;
-    color:var(--rose);
-    font-family:"DM Serif Display",serif;
-    font-size:22px;
-}
-
-/* =========================================================
-   HEART JAR
-========================================================= */
-
-.jar-wrap{
-    width:250px;
-    margin:55px auto 0;
-    text-align:center;
-}
-
-.jar-lid{
-    width:125px;
-    height:15px;
-    margin:auto;
-    border-radius:7px;
-    background:linear-gradient(#c99e5a,#8c6b3e);
-}
-
-.jar-neck{
-    width:105px;
-    height:35px;
-    margin:0 auto -2px;
-    border:2px solid rgba(255,255,255,.23);
-    border-bottom:0;
-    border-radius:16px 16px 0 0;
-}
-
-.jar{
-    width:190px;
-    height:245px;
-    margin:auto;
-    position:relative;
-    overflow:hidden;
-    border:2px solid rgba(255,255,255,.25);
-    border-radius:25px 25px 38px 38px;
-    background:linear-gradient(
-        100deg,
-        rgba(255,255,255,.11),
-        rgba(255,255,255,.025)
-    );
-    box-shadow:
-        inset 15px 0 rgba(255,255,255,.025),
-        0 35px 80px rgba(0,0,0,.4);
-}
-
-.jar-liquid{
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:100%;
-    height:18%;
-    background:linear-gradient(
-        rgba(239,158,174,.18),
-        rgba(239,158,174,.42)
-    );
-    border-top:1px solid rgba(239,158,174,.4);
-    transition:height 1s cubic-bezier(.22,.61,.36,1);
-}
-
-.jar-liquid::before{
-    content:"";
-    position:absolute;
-    left:-20%;
-    top:-7px;
-    width:140%;
-    height:15px;
-    border-radius:50%;
-    background:rgba(246,174,189,.25);
-    animation:wave 3s ease-in-out infinite;
-}
-
-@keyframes wave{
-    0%,100%{transform:translateX(-3%)}
-    50%{transform:translateX(3%)}
-}
-
-.jar-hearts{
-    position:absolute;
-    inset:0;
-    z-index:3;
-}
-
-.jar-heart{
-    position:absolute;
-    color:var(--rose);
-    text-shadow:0 0 12px rgba(239,158,174,.55);
-    animation:jarFloat 4s ease-in-out infinite;
-}
-
-@keyframes jarFloat{
-
-    0%{
-        transform:translateY(12px) rotate(-8deg);
-    }
-
-    50%{
-        transform:translateY(-45px) rotate(8deg);
-    }
-
-    100%{
-        transform:translateY(-90px) rotate(-5deg);
-        opacity:.15;
-    }
-}
-
-.jar-shine{
-    position:absolute;
-    z-index:8;
-    left:22px;
-    top:25px;
-    width:18px;
-    height:175px;
-    border-radius:50%;
-    background:linear-gradient(
-        90deg,
-        rgba(255,255,255,.16),
-        transparent
-    );
-    pointer-events:none;
-}
-
-.jar-count{
-    margin-top:18px;
-    color:var(--gold2);
-    font-size:11px;
-}
-
-.jar-full{
-    margin-top:9px;
-    color:var(--rose);
-    font-size:10px;
-}
-
-/* =========================================================
-   REASON
-========================================================= */
-
-.reason{
-    width:min(480px,100%);
-    height:270px;
-    margin:45px auto 0;
-    perspective:1000px;
+.reason-card{
+    width:min(500px,100%);
+    height:310px;
     cursor:pointer;
-}
-
-.reason-inner{
-    width:100%;
-    height:100%;
-    position:relative;
     transform-style:preserve-3d;
-    transition:.8s;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1);
 }
 
-.reason.flipped .reason-inner{
+.reason-card.flipped{
     transform:rotateY(180deg);
 }
 
-.reason-face{
+.reason-front,
+.reason-back{
     position:absolute;
     inset:0;
-    padding:35px;
+    border-radius:30px;
+    padding:40px;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    border:1px solid var(--line);
-    border-radius:25px;
-    background:var(--card);
-    backdrop-filter:blur(25px);
     backface-visibility:hidden;
 }
 
-.reason-face small{
-    color:var(--gold);
-    font-size:8px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    margin-bottom:20px;
+.reason-front{
+    flex-direction:column;
 }
 
-.reason-face p{
+.reason-front small{
+    color:#777;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-size:9px;
+}
+
+.reason-front strong{
     font-family:"DM Serif Display",serif;
-    font-size:28px;
-    line-height:1.2;
+    font-size:42px;
+    margin-top:20px;
 }
 
 .reason-back{
     transform:rotateY(180deg);
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    line-height:1.5;
 }
 
-/* =========================================================
-   LYRICS
-========================================================= */
-
-.lyrics-box{
-    max-width:650px;
-    margin:45px auto 0;
-    padding:40px;
-    text-align:center;
-}
-
-.song-label{
-    color:var(--gold);
-    font-size:9px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    margin-bottom:25px;
-}
+/* lyrics */
 
 .lyrics{
+    width:min(760px,100%);
+    margin:auto;
+    padding:45px;
+    border-radius:30px;
+}
+
+.lyrics-title{
+    font-family:"DM Serif Display",serif;
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+.lyrics p{
     font-family:"Playfair Display",serif;
-    font-size:clamp(19px,3vw,29px);
-    line-height:1.75;
-    color:#e9e2df;
+    font-size:clamp(20px,3vw,29px);
+    line-height:1.8;
+    color:#d9d3d5;
 }
 
-.lyrics em{
-    color:var(--rose2);
+.lyrics .highlight{
+    color:var(--rose);
 }
 
-.song-credit{
-    margin-top:25px;
+.lyrics-credit{
+    margin-top:28px;
+    font-size:10px;
     color:#666;
-    font-size:9px;
-    letter-spacing:.15em;
-    text-transform:uppercase;
+    letter-spacing:.1em;
 }
 
-/* =========================================================
-   FORMS
-========================================================= */
+/* forms */
 
 .form-card{
-    margin-top:45px;
-    padding:30px;
+    padding:35px;
+    border-radius:28px;
 }
 
 .form-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:15px;
 }
 
 .field{
     display:flex;
     flex-direction:column;
-    gap:7px;
+    gap:8px;
 }
 
 .field.full{
@@ -1029,22 +874,25 @@ section{
 }
 
 .field label{
-    color:#777;
-    font-size:8px;
+    color:#888;
+    font-size:10px;
+    letter-spacing:.1em;
     text-transform:uppercase;
-    letter-spacing:.14em;
 }
 
 .field input,
 .field textarea,
 .field select{
     width:100%;
-    outline:none;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:13px;
-    padding:13px 14px;
-    background:rgba(0,0,0,.22);
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--line);
     color:white;
+    border-radius:14px;
+    padding:14px 15px;
+    outline:none;
+    font-family:Inter,sans-serif;
+    font-size:13px;
+    transition:.2s;
 }
 
 .field textarea{
@@ -1052,15 +900,37 @@ section{
     resize:vertical;
 }
 
-.status{
-    min-height:18px;
-    margin-top:13px;
-    color:var(--gold2);
-    font-size:10px;
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:rgba(232,160,180,.55);
+    background:rgba(255,255,255,.055);
+}
+
+.submit-btn{
+    margin-top:17px;
+    border:0;
+    border-radius:100px;
+    padding:14px 24px;
+    background:var(--white);
+    color:#090909;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(255,255,255,.08);
+}
+
+.form-status{
+    margin-top:14px;
+    font-size:11px;
+    color:#999;
 }
 
 @media(max-width:650px){
-
     .form-grid{
         grid-template-columns:1fr;
     }
@@ -1070,385 +940,598 @@ section{
     }
 }
 
-/* =========================================================
-   TICKET
-========================================================= */
+/* jar */
+
+.jar-section{
+    display:flex;
+    justify-content:center;
+}
+
+.jar-wrap{
+    text-align:center;
+}
+
+.jar{
+    position:relative;
+    width:230px;
+    height:300px;
+    margin:0 auto;
+}
+
+.jar-lid{
+    position:absolute;
+    top:0;
+    left:17px;
+    width:196px;
+    height:30px;
+    border-radius:10px;
+    background:linear-gradient(180deg,#d5b37a,#8c6c3e);
+    border:1px solid rgba(255,255,255,.18);
+    z-index:10;
+}
+
+.jar-body{
+    position:absolute;
+    top:18px;
+    left:0;
+    width:230px;
+    height:280px;
+    border-radius:45px 45px 55px 55px;
+    border:2px solid rgba(255,255,255,.17);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.025)
+        );
+    overflow:hidden;
+    box-shadow:
+        inset 10px 0 30px rgba(255,255,255,.025),
+        inset -10px 0 30px rgba(255,255,255,.025),
+        0 25px 80px rgba(0,0,0,.4);
+}
+
+.jar-shine{
+    position:absolute;
+    top:25px;
+    left:24px;
+    width:15px;
+    height:190px;
+    border-radius:100px;
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.3),
+        transparent
+    );
+    filter:blur(2px);
+    z-index:8;
+}
+
+.jar-liquid{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0%;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(232,160,180,.18),
+            rgba(177,77,104,.28)
+        );
+    transition:height 1.2s cubic-bezier(.2,.8,.2,1);
+    z-index:1;
+}
+
+.jar-liquid::before{
+    content:"";
+    position:absolute;
+    top:-8px;
+    left:-10%;
+    width:120%;
+    height:18px;
+    border-radius:50%;
+    background:rgba(232,160,180,.20);
+    filter:blur(2px);
+}
+
+.jar-hearts{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    overflow:hidden;
+}
+
+.jar-heart{
+    position:absolute;
+    bottom:-35px;
+    font-size:18px;
+    animation:jarHeartRise 5s linear forwards;
+    opacity:0;
+}
+
+@keyframes jarHeartRise{
+    0%{
+        opacity:0;
+        transform:translateY(0) scale(.5) rotate(-15deg);
+    }
+    10%{
+        opacity:.95;
+    }
+    55%{
+        opacity:.9;
+    }
+    100%{
+        opacity:0;
+        transform:
+            translateY(-280px)
+            translateX(var(--drift))
+            scale(1.1)
+            rotate(15deg);
+    }
+}
+
+.jar-count{
+    margin-top:25px;
+    font-family:"DM Serif Display",serif;
+    font-size:25px;
+}
+
+.jar-note{
+    margin-top:7px;
+    color:#777;
+    font-size:11px;
+}
+
+/* ticket */
+
+.ticket-area{
+    display:flex;
+    justify-content:center;
+}
 
 .ticket{
-    width:min(450px,100%);
-    margin:45px auto 0;
+    width:min(850px,100%);
+    background:#f5efe5;
+    color:#171316;
+    border-radius:26px;
     overflow:hidden;
-    border-radius:22px;
-    background:#f2e9df;
-    color:#171414;
-    box-shadow:0 35px 90px rgba(0,0,0,.45);
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
 }
 
-.ticket-top{
-    padding:25px;
-    color:white;
-    text-align:left;
-    background:linear-gradient(135deg,#171414,#292326);
+.ticket-main{
+    display:grid;
+    grid-template-columns:1fr 260px;
+    min-height:280px;
 }
 
-.ticket-mini{
-    color:var(--gold);
-    font-size:8px;
+.ticket-info{
+    padding:38px;
+}
+
+.ticket-label{
+    font-size:9px;
     letter-spacing:.25em;
     text-transform:uppercase;
+    color:#8a6b54;
 }
 
-.ticket-top h3{
+.ticket-name{
     font-family:"DM Serif Display",serif;
-    font-size:34px;
-    font-weight:400;
-    margin-top:10px;
+    font-size:64px;
+    line-height:1;
+    margin:16px 0;
 }
 
-.ticket-top p{
-    color:#aaa;
+.ticket-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.ticket-pill{
+    border:1px solid #d4c8b8;
+    border-radius:100px;
+    padding:8px 12px;
     font-size:10px;
-    margin-top:5px;
+}
+
+.ticket-affirmation{
+    margin-top:30px;
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    font-size:17px;
+    color:#6e5860;
+}
+
+.ticket-qr{
+    background:#e9dfd1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    border-left:1px dashed #b8a995;
+}
+
+.ticket-qr img{
+    width:170px;
+    height:170px;
+    object-fit:contain;
+    background:white;
+}
+
+.ticket-qr small{
+    margin-top:10px;
+    font-size:8px;
+    letter-spacing:.18em;
+    color:#796b5c;
 }
 
 .ticket-cut{
     position:relative;
-    height:18px;
-    background:#f2e9df;
+    border-top:2px dashed #b4a594;
+    padding:28px 38px;
+    background:#f0e7da;
 }
 
 .ticket-cut::before,
 .ticket-cut::after{
     content:"";
     position:absolute;
-    top:1px;
-    width:16px;
-    height:16px;
+    width:26px;
+    height:26px;
+    background:#050505;
     border-radius:50%;
-    background:var(--bg);
+    top:-14px;
 }
 
 .ticket-cut::before{
-    left:-8px;
+    left:-13px;
 }
 
 .ticket-cut::after{
-    right:-8px;
+    right:-13px;
 }
 
-.ticket-lower{
-    padding:25px;
+.ticket-cut-grid{
     display:grid;
-    grid-template-columns:1fr 95px;
-    gap:18px;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+    align-items:center;
 }
 
-.ticket-details{
-    display:flex;
-    flex-direction:column;
-    gap:11px;
-}
-
-.ticket-detail span{
+.ticket-detail label{
     display:block;
-    color:#9a8e86;
-    font-size:7px;
-    letter-spacing:.16em;
+    font-size:8px;
     text-transform:uppercase;
+    letter-spacing:.15em;
+    color:#927f6a;
 }
 
 .ticket-detail strong{
+    display:block;
+    margin-top:6px;
     font-size:13px;
 }
 
-.ticket-affirm{
-    margin-top:5px;
-    color:#6c525a;
-    font-family:"Playfair Display",serif;
-    font-size:12px;
-}
-
-.ticket-qr{
-    width:95px;
-    height:95px;
-    padding:5px;
-    border-radius:8px;
-    background:white;
-    object-fit:contain;
-}
-
-.ticket-actions{
-    margin-top:25px;
+.ticket-download{
+    margin-top:20px;
     display:flex;
-    justify-content:center;
-    gap:9px;
+    gap:10px;
     flex-wrap:wrap;
 }
 
-/* =========================================================
-   PHYSICAL TICKET
-========================================================= */
+.ticket-btn{
+    border:0;
+    border-radius:100px;
+    padding:13px 18px;
+    font-size:11px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.ticket-btn.dark{
+    background:#171316;
+    color:#fff;
+}
+
+.ticket-btn.light{
+    background:#ddd0c0;
+    color:#211b1e;
+}
+
+@media(max-width:700px){
+    .ticket-main{
+        grid-template-columns:1fr;
+    }
+
+    .ticket-qr{
+        border-left:0;
+        border-top:1px dashed #b8a995;
+    }
+
+    .ticket-name{
+        font-size:48px;
+    }
+
+    .ticket-cut-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* physical ticket */
 
 .physical{
-    display:none;
-    max-width:600px;
-    margin:35px auto 0;
-    padding:28px;
-    text-align:left;
+    padding:35px;
+    border-radius:28px;
 }
 
-.physical.show{
-    display:block;
-    animation:up .5s ease;
+.physical-title{
+    font-family:"DM Serif Display",serif;
+    font-size:35px;
 }
 
-@keyframes up{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* footer */
 
 footer{
-    padding:75px 0 40px;
-    border-top:1px solid rgba(255,255,255,.06);
+    padding:90px 0 45px;
     text-align:center;
 }
 
-.footer-heart{
-    color:var(--rose);
-    font-size:30px;
+.footer-title{
+    font-family:"DM Serif Display",serif;
+    font-size:48px;
 }
 
-footer p{
-    margin-top:12px;
-    color:#555;
-    font-size:9px;
-    letter-spacing:.13em;
-    text-transform:uppercase;
+.footer-copy{
+    color:#666;
+    margin-top:10px;
+    font-size:11px;
 }
 
-/* =========================================================
-   MODAL
-========================================================= */
+/* modal */
 
 .modal{
     position:fixed;
     inset:0;
-    z-index:10000;
+    z-index:3000;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(15px);
     display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
-    background:rgba(0,0,0,.76);
-    backdrop-filter:blur(12px);
 }
 
-.modal.show{
+.modal.open{
     display:flex;
 }
 
-.modal-card{
-    width:min(720px,100%);
+.modal-box{
+    width:min(850px,100%);
     max-height:90vh;
-    overflow-y:auto;
-    padding:30px;
-    border:1px solid var(--line);
-    border-radius:25px;
-    background:rgba(17,17,19,.96);
-    box-shadow:0 40px 120px rgba(0,0,0,.65);
+    overflow:auto;
+    border-radius:28px;
+    padding:28px;
+    position:relative;
 }
 
-.modal-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:22px;
-}
-
-.modal-head h2{
-    font-family:"DM Serif Display",serif;
-    font-weight:400;
-    font-size:34px;
-}
-
-.close{
-    width:35px;
-    height:35px;
-    border:1px solid var(--line);
+.modal-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:34px;
+    height:34px;
     border-radius:50%;
-    background:transparent;
+    border:1px solid var(--line);
+    background:#111;
     color:white;
-    font-size:18px;
+    cursor:pointer;
 }
 
-/* =========================================================
-   ADMIN
-========================================================= */
+.modal-title{
+    font-family:"DM Serif Display",serif;
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+/* admin */
 
 .admin-tabs{
     display:flex;
-    gap:7px;
-    overflow:auto;
+    gap:8px;
+    overflow-x:auto;
     margin-bottom:22px;
+    padding-bottom:5px;
 }
 
 .admin-tab{
-    flex-shrink:0;
+    white-space:nowrap;
     border:1px solid var(--line);
-    background:transparent;
-    color:#888;
-    padding:9px 13px;
-    border-radius:12px;
-    font-size:9px;
+    background:#111;
+    color:#aaa;
+    border-radius:100px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:11px;
 }
 
 .admin-tab.active{
-    background:white;
+    background:#eee;
     color:#111;
 }
 
-.admin-section{
+.admin-page{
     display:none;
 }
 
-.admin-section.active{
+.admin-page.active{
     display:block;
-}
-
-.admin-help{
-    color:#777;
-    font-size:10px;
-    line-height:1.6;
-    margin-bottom:18px;
-}
-
-.admin-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:15px;
-}
-
-.admin-row{
-    padding:15px;
-    border:1px solid var(--line);
-    border-radius:15px;
-    background:rgba(255,255,255,.025);
-}
-
-.admin-row-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.admin-row small{
-    color:#666;
-    font-size:8px;
-}
-
-.delete{
-    border:0;
-    color:#ff7187;
-    background:transparent;
-    font-size:10px;
-}
-
-.image-preview{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-    border-radius:13px;
-    margin-bottom:10px;
 }
 
 .admin-actions{
     display:flex;
-    gap:8px;
+    gap:10px;
     flex-wrap:wrap;
-    margin-top:14px;
+    margin-top:15px;
 }
 
-.admin-message{
-    padding:15px;
+.admin-btn{
     border:1px solid var(--line);
-    border-radius:15px;
-    margin-top:9px;
-}
-
-.admin-message strong{
-    font-size:12px;
-}
-
-.admin-message p{
-    color:#aaa;
+    background:#161616;
+    color:#eee;
+    border-radius:12px;
+    padding:11px 15px;
+    cursor:pointer;
     font-size:11px;
-    line-height:1.6;
-    margin-top:7px;
 }
 
-.admin-message small{
-    color:#666;
-    font-size:8px;
+.admin-btn.primary{
+    background:var(--rose);
+    color:#160c10;
+    border-color:transparent;
 }
 
-/* =========================================================
-   TOAST
-========================================================= */
+.admin-btn.danger{
+    color:#ff9696;
+}
 
-#toast{
-    position:fixed;
-    left:50%;
-    bottom:25px;
-    z-index:11000;
-    transform:translate(-50%,30px);
-    opacity:0;
-    padding:12px 17px;
+.admin-item{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    padding:13px;
     border:1px solid var(--line);
-    border-radius:14px;
-    background:rgba(25,25,27,.94);
-    color:white;
-    font-size:10px;
+    border-radius:16px;
+    margin-top:10px;
+}
+
+.admin-item img{
+    width:70px;
+    height:55px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.admin-item-info{
+    flex:1;
+    min-width:0;
+}
+
+.admin-item-info strong{
+    display:block;
+    font-size:12px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.admin-item-info small{
+    color:#666;
+}
+
+.message-item{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    margin-top:12px;
+}
+
+.message-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.message-name{
+    font-weight:600;
+}
+
+.message-date{
+    color:#666;
+    font-size:9px;
+}
+
+.message-body{
+    color:#aaa;
+    font-size:12px;
+    line-height:1.7;
+    margin-top:10px;
+    white-space:pre-wrap;
+}
+
+.empty-admin{
+    padding:30px;
+    text-align:center;
+    color:#666;
+    border:1px dashed #292929;
+    border-radius:18px;
+}
+
+/* toast */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,20px);
+    z-index:6000;
+    padding:12px 18px;
+    border-radius:100px;
+    background:#f3eee8;
+    color:#111;
+    font-size:11px;
+    opacity:0;
     pointer-events:none;
     transition:.3s;
 }
 
-#toast.show{
+.toast.show{
     opacity:1;
     transform:translate(-50%,0);
 }
 
-@media(max-width:600px){
+/* particles */
 
-    section{
-        padding:70px 0;
+.particle{
+    position:fixed;
+    pointer-events:none;
+    z-index:5000;
+    width:7px;
+    height:7px;
+    border-radius:2px;
+    animation:particleFall 2.8s ease-out forwards;
+}
+
+@keyframes particleFall{
+    0%{
+        transform:translate(0,0) rotate(0);
+        opacity:1;
     }
 
-    .ticket-lower{
-        grid-template-columns:1fr 78px;
+    100%{
+        transform:
+            translate(var(--x),var(--y))
+            rotate(var(--r));
+        opacity:0;
     }
+}
 
-    .ticket-qr{
-        width:78px;
-        height:78px;
+/* animation utilities */
+
+.fade-in{
+    animation:fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(18px);
     }
-
-    .letter-card{
-        padding:28px 22px;
-    }
-
-    .lyrics-box{
-        padding:28px 20px;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
@@ -1457,1044 +1540,953 @@ footer p{
 
 <body>
 
-<!-- ========================================================
+<div class="bg-orb orb-one"></div>
+<div class="bg-orb orb-two"></div>
+<div class="bg-orb orb-three"></div>
+
+<!-- =========================================================
      ENTRY
-======================================================== -->
+========================================================= -->
 
 <div id="entry">
 
-    <div class="entry-inner">
+    <div class="entry-box">
 
-        <div class="entry-small">
-            a little place made for you
+        <div class="entry-mini">
+            private birthday experience
         </div>
 
         <div class="entry-title">
-            my <em>Gwen</em>
+            my <span>Gwen</span>
         </div>
 
-        <div class="entry-note">
-            Something is waiting on the other side.
-            <br>
-            You only need the little secret.
+        <div class="entry-sub">
+            A little place made for one very special birthday.
+            Enter the passcode to continue.
         </div>
 
-        <div class="pass-box">
+        <div class="pass-wrap">
 
-            <input
-                id="passInput"
-                type="password"
-                placeholder="Enter the passcode"
-                autocomplete="off"
-            >
-
-            <button
-                class="primary"
-                onclick="unlock()"
-            >
-                Enter
-            </button>
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
+            <input class="pass-input" maxlength="1" inputmode="text">
 
         </div>
 
-        <div
-            id="entryError"
-            class="error"
-        ></div>
+        <div id="entryError" class="entry-error"></div>
 
     </div>
 
 </div>
 
 
-<!-- ========================================================
-     INTRO
-======================================================== -->
+<!-- =========================================================
+     COUNTDOWN
+========================================================= -->
 
-<div id="intro">
-
-    <div
-        id="countNumber"
-        class="count-number"
-    >
-        3
-    </div>
-
+<div id="countdown">
+    <div id="countNumber" class="count-number">3</div>
 </div>
 
 
-<!-- ========================================================
-     TOP BAR
-     7 taps on Gwen = Admin
-======================================================== -->
+<!-- =========================================================
+     MAIN APP
+========================================================= -->
 
-<header class="topbar">
+<div id="app">
 
-    <div
-        class="brand"
-        id="secretBrand"
-        onclick="adminClick()"
-    >
-        my <span>Gwen</span>
-    </div>
+    <!-- TOP BAR -->
 
-    <nav class="nav">
+    <header class="topbar">
 
-        <button onclick="go('cake')">
-            Cake
-        </button>
+        <div class="topbar-inner">
 
-        <button onclick="go('gifts')">
-            Gifts
-        </button>
-
-        <button onclick="go('memories')">
-            Memories
-        </button>
-
-        <button onclick="go('ticket')">
-            Ticket
-        </button>
-
-    </nav>
-
-</header>
-
-
-<!-- ========================================================
-     MAIN
-======================================================== -->
-
-<main id="main">
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="hero-kicker">
-            October 03 · 2026
-        </div>
-
-        <h1 class="hero-title">
-            happy
-            <br>
-            <span class="pink">birthday,</span>
-            <br>
-            <span class="italic">Gwen.</span>
-        </h1>
-
-        <p class="hero-desc">
-            A tiny corner of the internet made for one
-            very particular person.
-            No noise. No crowd.
-            Just a little celebration.
-        </p>
-
-        <div class="hero-date">
-            03 · 10 · 2026
-        </div>
-
-        <div class="countdown">
-
-            <div class="time">
-                <b id="days">00</b>
-                <span>Days</span>
-            </div>
-
-            <div class="time">
-                <b id="hours">00</b>
-                <span>Hours</span>
-            </div>
-
-            <div class="time">
-                <b id="minutes">00</b>
-                <span>Minutes</span>
-            </div>
-
-            <div class="time">
-                <b id="seconds">00</b>
-                <span>Seconds</span>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="hero-ring"></div>
-
-</section>
-
-
-<!-- CAKE -->
-
-<section
-    id="cake"
-    class="center"
->
-
-    <div class="container">
-
-        <div class="label">
-            make a wish
-        </div>
-
-        <h2 class="title">
-            One more candle.
-        </h2>
-
-        <p
-            class="subtitle"
-            style="margin-inline:auto"
-        >
-            Tap the button when you're ready.
-            The little flames are waiting.
-        </p>
-
-        <div class="cake-stage">
-
-            <div class="cake">
-
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-
-                <div class="cake-top"></div>
-
-                <div class="cake-body"></div>
-
-                <div class="cake-base"></div>
-
-            </div>
-
-        </div>
-
-        <p
-            style="
-                color:#777;
-                font-size:11px;
-                line-height:1.7;
-            "
-        >
-            Make your wish.
-        </p>
-
-        <button
-            class="primary"
-            style="margin-top:18px"
-            onclick="blowCandles()"
-        >
-            Make the wish ♡
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- GIFTS -->
-
-<section id="gifts">
-
-    <div class="container">
-
-        <div class="label">
-            three little things
-        </div>
-
-        <h2 class="title">
-            Open them slowly.
-        </h2>
-
-        <p class="subtitle">
-            Some things are better when you don't rush through them.
-        </p>
-
-        <div class="grid3">
+            <!-- ADMIN ACCESS IS HIDDEN INSIDE GWEN -->
 
             <div
-                class="gift glass"
-                onclick="openGift(this,0)"
+                id="brand"
+                class="brand"
+                title="my Gwen"
             >
+                my <span>Gwen</span>
+            </div>
 
-                <div class="gift-num">
-                    01
+            <nav class="navlinks">
+
+                <button onclick="scrollToSection('cakeSection')">
+                    cake
+                </button>
+
+                <button onclick="scrollToSection('gifts')">
+                    gifts
+                </button>
+
+                <button onclick="scrollToSection('memories')">
+                    memories
+                </button>
+
+                <button onclick="scrollToSection('ticketSection')">
+                    ticket
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-inner">
+
+                    <div class="hero-kicker">
+                        october 03 · 2026
+                    </div>
+
+                    <h1 class="hero-title">
+                        happy<br>
+                        <span class="pink">birthday.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Some people deserve more than a message.
+                        So this little corner of the internet exists
+                        just for you.
+                    </p>
+
+                    <div class="hero-date">
+                        made especially for Gwen
+                    </div>
+
                 </div>
 
-                <div class="gift-icon">
-                    ♡
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LETTER
+        ================================================== -->
+
+        <section id="letterSection" class="hidden">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        from me
+                    </div>
+
+                    <h2 class="section-title">
+                        a little letter.
+                    </h2>
+
                 </div>
 
-                <div>
+                <div class="glass letter-card">
 
-                    <h3 id="giftTitle0">
-                        A little love
-                    </h3>
+                    <div
+                        id="letterContent"
+                        class="letter-content"
+                    ></div>
 
-                    <p id="giftText0">
-                        Open this.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CAKE
+        ================================================== -->
+
+        <section id="cakeSection">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        make a wish
+                    </div>
+
+                    <h2 class="section-title">
+                        one more candle.
+                    </h2>
+
+                    <p class="section-copy">
+                        Tap the button when you're ready.
                     </p>
 
                 </div>
 
-            </div>
+                <div class="cake-wrap">
 
+                    <div class="cake">
 
-            <div
-                class="gift glass"
-                onclick="openGift(this,1)"
-            >
+                        <div class="cake-shadow"></div>
 
-                <div class="gift-num">
-                    02
-                </div>
+                        <div class="cake-bottom"></div>
 
-                <div class="gift-icon">
-                    ✦
-                </div>
+                        <div class="cake-middle"></div>
 
-                <div>
+                        <div class="cake-top"></div>
 
-                    <h3 id="giftTitle1">
-                        A secret
-                    </h3>
+                        <div class="candle one">
+                            <div class="flame"></div>
+                            <div class="smoke"></div>
+                        </div>
 
-                    <p id="giftText1">
-                        Open this.
-                    </p>
+                        <div class="candle two">
+                            <div class="flame"></div>
+                            <div class="smoke"></div>
+                        </div>
 
-                </div>
-
-            </div>
-
-
-            <div
-                class="gift glass"
-                onclick="openGift(this,2)"
-            >
-
-                <div class="gift-num">
-                    03
-                </div>
-
-                <div class="gift-icon">
-                    ∞
-                </div>
-
-                <div>
-
-                    <h3 id="giftTitle2">
-                        A promise
-                    </h3>
-
-                    <p id="giftText2">
-                        Open this.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MEMORIES -->
-
-<section id="memories">
-
-    <div class="container">
-
-        <div class="label">
-            little memories
-        </div>
-
-        <h2 class="title">
-            Moments worth keeping.
-        </h2>
-
-        <p class="subtitle">
-            Photos added through the private panel appear here automatically.
-        </p>
-
-        <div
-            id="gallery"
-            class="gallery"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- LETTER -->
-
-<section id="letterSection">
-
-    <div class="container">
-
-        <div class="label">
-            a letter
-        </div>
-
-        <h2 class="title">
-            Just for you.
-        </h2>
-
-        <div
-            id="letterCard"
-            class="letter-card glass empty"
-        >
-
-            <div
-                id="letterContent"
-                class="letter-content"
-            ></div>
-
-            <div class="letter-sign">
-                ♡
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- HEART JAR -->
-
-<section class="center">
-
-    <div class="container">
-
-        <div class="label">
-            wish jar
-        </div>
-
-        <h2 class="title">
-            Fill it with hearts.
-        </h2>
-
-        <p
-            class="subtitle"
-            style="margin-inline:auto"
-        >
-            Every tap puts another little heart inside.
-        </p>
-
-        <div class="jar-wrap">
-
-            <div class="jar-lid"></div>
-
-            <div class="jar-neck"></div>
-
-            <div class="jar">
-
-                <div
-                    id="jarLiquid"
-                    class="jar-liquid"
-                ></div>
-
-                <div
-                    id="jarHearts"
-                    class="jar-hearts"
-                ></div>
-
-                <div class="jar-shine"></div>
-
-            </div>
-
-            <div
-                id="jarCount"
-                class="jar-count"
-            >
-                0 hearts collected
-            </div>
-
-            <button
-                class="primary"
-                style="margin-top:18px"
-                onclick="addJarHeart()"
-            >
-                Put a heart in ♡
-            </button>
-
-            <div
-                id="jarFull"
-                class="jar-full"
-            ></div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- REASON -->
-
-<section class="center">
-
-    <div class="container">
-
-        <div class="label">
-            one reason
-        </div>
-
-        <h2 class="title">
-            Turn the card.
-        </h2>
-
-        <div
-            id="reasonCard"
-            class="reason"
-            onclick="flipReason()"
-        >
-
-            <div class="reason-inner">
-
-                <div class="reason-face">
-
-                    <small>
-                        tap to reveal
-                    </small>
-
-                    <p>
-                        There is a reason
-                        behind everything.
-                    </p>
-
-                </div>
-
-                <div class="reason-face reason-back">
-
-                    <small>
-                        ♡
-                    </small>
-
-                    <p id="reasonText">
-                        ...
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- HER -->
-
-<section>
-
-    <div class="container center">
-
-        <div class="label">
-            a song
-        </div>
-
-        <h2 class="title">
-            Her.
-        </h2>
-
-        <div class="lyrics-box glass">
-
-            <div class="song-label">
-                JVKE
-            </div>
-
-            <div class="lyrics">
-
-                <em>
-                    Fell in love, but it left me lonely
-                </em>
-                <br>
-
-                Tried to trust, but it burned me slowly
-                <br>
-
-                I didn't know what I was looking for
-                <br>
-
-                'Til I found her
-                <br>
-
-                I found her
-                <br>
-
-                Without her
-                <br>
-
-                I'm a mess (I'm a mess)
-                <br>
-
-                There was nothing 'bout that love that made sense,
-                I was stressed
-                <br>
-
-                'Til I found her (oh, oh)
-
-            </div>
-
-            <div class="song-credit">
-                Her · JVKE
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MESSAGE -->
-
-<section>
-
-    <div class="container">
-
-        <div class="label">
-            leave something here
-        </div>
-
-        <h2 class="title">
-            A message for me?
-        </h2>
-
-        <p class="subtitle">
-            Whatever you want to say can be left here.
-        </p>
-
-        <form
-            id="messageForm"
-            class="form-card glass"
-        >
-
-            <div class="form-grid">
-
-                <div class="field">
-
-                    <label>
-                        Your name
-                    </label>
-
-                    <input
-                        id="messageName"
-                        required
-                        maxlength="80"
-                        placeholder="Your name"
-                    >
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Mood
-                    </label>
-
-                    <select id="messageMood">
-
-                        <option>♡</option>
-                        <option>Happy</option>
-                        <option>Cute</option>
-                        <option>Nostalgic</option>
-                        <option>Random</option>
-
-                    </select>
-
-                </div>
-
-                <div class="field full">
-
-                    <label>
-                        Message
-                    </label>
-
-                    <textarea
-                        id="messageText"
-                        required
-                        maxlength="2000"
-                        placeholder="Write something..."
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-            <button
-                class="primary"
-                style="margin-top:18px"
-            >
-                Send message
-            </button>
-
-            <div
-                id="messageStatus"
-                class="status"
-            ></div>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- TICKET -->
-
-<section
-    id="ticket"
-    class="center"
->
-
-    <div class="container">
-
-        <div class="label">
-            your ticket
-        </div>
-
-        <h2 class="title">
-            Keep this one.
-        </h2>
-
-        <p
-            class="subtitle"
-            style="margin-inline:auto"
-        >
-            Your little digital pass.
-        </p>
-
-
-        <!--
-            THE WHOLE TICKET IS DISPLAYED,
-            BUT ONLY THE LOWER CUT PART IS
-            DOWNLOADED.
-        -->
-
-        <div
-            id="ticket"
-            class="ticket"
-        >
-
-            <div class="ticket-top">
-
-                <div class="ticket-mini">
-                    my Gwen · birthday pass
-                </div>
-
-                <h3>
-                    Birthday 2026
-                </h3>
-
-                <p>
-                    October 03 · 2026
-                </p>
-
-            </div>
-
-
-            <div class="ticket-cut"></div>
-
-
-            <!-- LOWER CUT PART -->
-
-            <div
-                id="ticketLower"
-                class="ticket-lower"
-            >
-
-                <div class="ticket-details">
-
-                    <div class="ticket-detail">
-
-                        <span>
-                            Guest
-                        </span>
-
-                        <strong>
-                            Koko
-                        </strong>
-
-                    </div>
-
-                    <div class="ticket-detail">
-
-                        <span>
-                            Event
-                        </span>
-
-                        <strong>
-                            my Gwen Birthday
-                        </strong>
-
-                    </div>
-
-                    <div class="ticket-detail">
-
-                        <span>
-                            Date
-                        </span>
-
-                        <strong>
-                            03 October 2026
-                        </strong>
-
-                    </div>
-
-                    <div class="ticket-detail">
-
-                        <span>
-                            Entry
-                        </span>
-
-                        <strong>
-                            Special Guest
-                        </strong>
-
-                    </div>
-
-                    <div class="ticket-affirm">
-                        You are exactly where you are meant to be. ♡
-                    </div>
-
-                </div>
-
-
-                <!--
-                    IMPORTANT:
-                    This is the EXACT supplied QR image.
-                    No QR generator is used.
-                -->
-
-                <img
-                    id="ticketQR"
-                    class="ticket-qr"
-                    src="gwen-qr.png"
-                    alt="Ticket QR"
-                >
-
-            </div>
-
-        </div>
-
-
-        <div class="ticket-actions">
-
-            <button
-                class="primary"
-                onclick="downloadTicket()"
-            >
-                Download Ticket
-            </button>
-
-            <button
-                class="secondary"
-                onclick="togglePhysical()"
-            >
-                Apply for Physical Ticket
-            </button>
-
-        </div>
-
-
-        <!-- PHYSICAL -->
-
-        <div
-            id="physical"
-            class="physical glass"
-        >
-
-            <div class="label">
-                physical ticket
-            </div>
-
-            <h3
-                style="
-                    font-family:'DM Serif Display',serif;
-                    font-weight:400;
-                    font-size:30px;
-                "
-            >
-                Want a real one?
-            </h3>
-
-            <p
-                style="
-                    color:#777;
-                    font-size:11px;
-                    line-height:1.6;
-                    margin-top:8px;
-                "
-            >
-                Submit your details and the request will be saved
-                to Firestore.
-            </p>
-
-            <form
-                id="physicalForm"
-                style="margin-top:22px"
-            >
-
-                <div class="form-grid">
-
-                    <div class="field">
-
-                        <label>
-                            Name
-                        </label>
-
-                        <input
-                            id="physicalName"
-                            required
-                            maxlength="80"
-                            placeholder="Your name"
-                        >
-
-                    </div>
-
-                    <div class="field">
-
-                        <label>
-                            Contact
-                        </label>
-
-                        <input
-                            id="physicalContact"
-                            required
-                            maxlength="100"
-                            placeholder="Phone / email"
-                        >
-
-                    </div>
-
-                    <div class="field full">
-
-                        <label>
-                            Address
-                        </label>
-
-                        <textarea
-                            id="physicalAddress"
-                            required
-                            maxlength="500"
-                            placeholder="Address"
-                        ></textarea>
+                        <div class="candle three">
+                            <div class="flame"></div>
+                            <div class="smoke"></div>
+                        </div>
 
                     </div>
 
                 </div>
 
                 <button
-                    class="primary"
-                    style="margin-top:18px"
+                    class="blow-btn"
+                    onclick="blowCandles()"
                 >
-                    Submit application
+                    ✨ blow the candles
                 </button>
 
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GIFTS
+        ================================================== -->
+
+        <section id="gifts">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        three little things
+                    </div>
+
+                    <h2 class="section-title">
+                        open slowly.
+                    </h2>
+
+                </div>
+
                 <div
-                    id="physicalStatus"
-                    class="status"
+                    id="giftGrid"
+                    class="gift-grid"
                 ></div>
 
-            </form>
+            </div>
 
+        </section>
+
+
+        <!-- =================================================
+             MEMORIES
+        ================================================== -->
+
+        <section id="memories">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        little moments
+                    </div>
+
+                    <h2 class="section-title">
+                        memories.
+                    </h2>
+
+                    <p class="section-copy">
+                        Photos added here appear directly from the
+                        birthday collection.
+                    </p>
+
+                </div>
+
+                <div
+                    id="galleryGrid"
+                    class="gallery-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REASON
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        one card
+                    </div>
+
+                    <h2 class="section-title">
+                        turn it over.
+                    </h2>
+
+                </div>
+
+                <div class="reason-area">
+
+                    <div
+                        id="reasonCard"
+                        class="reason-card"
+                        onclick="flipReason()"
+                    >
+
+                        <div class="glass reason-front">
+
+                            <small>
+                                tap to reveal
+                            </small>
+
+                            <strong>
+                                why you?
+                            </strong>
+
+                        </div>
+
+                        <div
+                            id="reasonBack"
+                            class="glass reason-back"
+                        >
+                            Because you're you.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LYRICS
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="lyrics glass">
+
+                    <div class="lyrics-title">
+                        her.
+                    </div>
+
+                    <p>
+                        Fell in love, but it left me lonely<br>
+                        Tried to trust, but it burned me slowly<br>
+                        I didn't know what I was looking for<br>
+                        'Til I found <span class="highlight">her</span><br>
+                        I found <span class="highlight">her</span><br>
+                        Without <span class="highlight">her</span><br>
+                        I'm a mess (I'm a mess)<br>
+                        There was nothing 'bout that love that made sense,
+                        I was stressed<br>
+                        'Til I found <span class="highlight">her</span>
+                        (oh, oh)
+                    </p>
+
+                    <div class="lyrics-credit">
+                        “Her” — JVKE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             WISH JAR
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        leave something here
+                    </div>
+
+                    <h2 class="section-title">
+                        the wish jar.
+                    </h2>
+
+                    <p class="section-copy">
+                        Write a little wish, thought or message.
+                        Every one becomes another heart in the jar.
+                    </p>
+
+                </div>
+
+                <div class="jar-section">
+
+                    <div class="jar-wrap">
+
+                        <div class="jar">
+
+                            <div class="jar-lid"></div>
+
+                            <div class="jar-body">
+
+                                <div
+                                    id="jarLiquid"
+                                    class="jar-liquid"
+                                ></div>
+
+                                <div
+                                    id="jarHearts"
+                                    class="jar-hearts"
+                                ></div>
+
+                                <div class="jar-shine"></div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="jarCount"
+                            class="jar-count"
+                        >
+                            0 hearts
+                        </div>
+
+                        <div class="jar-note">
+                            every message adds a little more
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="height:35px"></div>
+
+                <div class="form-card glass">
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label>
+                                your name
+                            </label>
+
+                            <input
+                                id="wishName"
+                                type="text"
+                                placeholder="optional"
+                            >
+
+                        </div>
+
+                        <div class="field">
+
+                            <label>
+                                mood
+                            </label>
+
+                            <select id="wishMood">
+
+                                <option value="♡">
+                                    soft
+                                </option>
+
+                                <option value="♥">
+                                    happy
+                                </option>
+
+                                <option value="✦">
+                                    magical
+                                </option>
+
+                                <option value="☾">
+                                    peaceful
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="field full">
+
+                            <label>
+                                your wish
+                            </label>
+
+                            <textarea
+                                id="wishText"
+                                placeholder="write something..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="submit-btn"
+                        onclick="submitWish()"
+                    >
+                        put it in the jar
+                    </button>
+
+                    <div
+                        id="wishStatus"
+                        class="form-status"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MESSAGE FORM
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        say something
+                    </div>
+
+                    <h2 class="section-title">
+                        leave a message.
+                    </h2>
+
+                    <p class="section-copy">
+                        Your message will be saved privately in the
+                        birthday Firestore collection.
+                    </p>
+
+                </div>
+
+                <div class="form-card glass">
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label>
+                                name
+                            </label>
+
+                            <input
+                                id="messageName"
+                                type="text"
+                                placeholder="your name"
+                            >
+
+                        </div>
+
+                        <div class="field">
+
+                            <label>
+                                relation
+                            </label>
+
+                            <input
+                                id="messageRelation"
+                                type="text"
+                                placeholder="friend, family..."
+                            >
+
+                        </div>
+
+                        <div class="field full">
+
+                            <label>
+                                message
+                            </label>
+
+                            <textarea
+                                id="messageText"
+                                placeholder="write your message..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="submit-btn"
+                        onclick="submitMessage()"
+                    >
+                        send message
+                    </button>
+
+                    <div
+                        id="messageStatus"
+                        class="form-status"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TICKET
+        ================================================== -->
+
+        <section id="ticketSection">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-eyebrow">
+                        your pass
+                    </div>
+
+                    <h2 class="section-title">
+                        birthday ticket.
+                    </h2>
+
+                </div>
+
+                <div class="ticket-area">
+
+                    <div
+                        id="ticketCapture"
+                        class="ticket"
+                    >
+
+                        <div class="ticket-main">
+
+                            <div class="ticket-info">
+
+                                <div class="ticket-label">
+                                    my Gwen · private event
+                                </div>
+
+                                <div class="ticket-name">
+                                    Koko
+                                </div>
+
+                                <div class="ticket-meta">
+
+                                    <div class="ticket-pill">
+                                        OCT 03
+                                    </div>
+
+                                    <div class="ticket-pill">
+                                        2026
+                                    </div>
+
+                                    <div class="ticket-pill">
+                                        BIRTHDAY
+                                    </div>
+
+                                </div>
+
+                                <div class="ticket-affirmation">
+                                    “You deserve a day that feels
+                                    exactly like you.”
+                                </div>
+
+                            </div>
+
+                            <div class="ticket-qr">
+
+                                <img
+                                    src="qr-code.png"
+                                    alt="Birthday QR Code"
+                                    id="ticketQR"
+                                >
+
+                                <small>
+                                    scan to enter
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOWER DETACHABLE PART -->
+
+                        <div class="ticket-cut">
+
+                            <div class="ticket-cut-grid">
+
+                                <div class="ticket-detail">
+
+                                    <label>
+                                        guest
+                                    </label>
+
+                                    <strong>
+                                        Koko
+                                    </strong>
+
+                                </div>
+
+                                <div class="ticket-detail">
+
+                                    <label>
+                                        date
+                                    </label>
+
+                                    <strong>
+                                        03 October 2026
+                                    </strong>
+
+                                </div>
+
+                                <div class="ticket-detail">
+
+                                    <label>
+                                        ticket
+                                    </label>
+
+                                    <strong>
+                                        GWEN · 001
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="ticket-download">
+
+                    <button
+                        class="ticket-btn dark"
+                        onclick="downloadTicket()"
+                    >
+                        ↓ download ticket
+                    </button>
+
+                    <button
+                        class="ticket-btn light"
+                        onclick="openModal('physicalModal')"
+                    >
+                        apply for physical ticket
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             OUTRO
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div style="text-align:center">
+
+                    <div class="section-eyebrow">
+                        that's all
+                    </div>
+
+                    <div
+                        class="serif"
+                        style="
+                            font-size:clamp(55px,10vw,110px);
+                            line-height:.9;
+                        "
+                    >
+                        stay<br>
+                        <span style="color:var(--rose)">
+                            wonderful.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-title">
+            my Gwen.
         </div>
 
-    </div>
+        <div class="footer-copy">
+            made with a little too much love · 03.10.2026
+        </div>
 
-</section>
+    </footer>
 
-
-<footer>
-
-    <div class="footer-heart">
-        ♡
-    </div>
-
-    <p>
-        Made for Gwen · with a little too much love
-    </p>
-
-</footer>
-
-</main>
+</div>
 
 
-<!-- ========================================================
-     ADMIN PASSWORD MODAL
-======================================================== -->
+<!-- =========================================================
+     PHYSICAL TICKET MODAL
+========================================================= -->
 
 <div
-    id="adminPasswordModal"
+    id="physicalModal"
     class="modal"
 >
 
-    <div class="modal-card">
+    <div class="modal-box glass">
 
-        <div class="modal-head">
+        <button
+            class="modal-close"
+            onclick="closeModal('physicalModal')"
+        >
+            ×
+        </button>
 
-            <h2>
-                Private
-            </h2>
-
-            <button
-                class="close"
-                onclick="closeModal('adminPasswordModal')"
-            >
-                ×
-            </button>
-
+        <div class="modal-title">
+            physical ticket.
         </div>
 
-        <p class="admin-help">
-            This area is hidden inside the name.
-            Enter the private access password.
+        <p
+            class="muted"
+            style="
+                font-size:12px;
+                line-height:1.8;
+                margin-bottom:25px;
+            "
+        >
+            Apply for a physical version of the birthday ticket.
+            Your request will be saved to Firestore.
         </p>
 
-        <div class="field">
+        <div class="form-grid">
 
-            <label>
-                Admin password
-            </label>
+            <div class="field">
 
-            <input
-                id="adminPassword"
-                type="password"
-                placeholder="Password"
-            >
+                <label>
+                    name
+                </label>
+
+                <input
+                    id="physicalName"
+                    type="text"
+                    placeholder="full name"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    phone / contact
+                </label>
+
+                <input
+                    id="physicalContact"
+                    type="text"
+                    placeholder="contact"
+                >
+
+            </div>
+
+            <div class="field full">
+
+                <label>
+                    address
+                </label>
+
+                <textarea
+                    id="physicalAddress"
+                    placeholder="delivery / collection address"
+                ></textarea>
+
+            </div>
+
+            <div class="field full">
+
+                <label>
+                    note
+                </label>
+
+                <textarea
+                    id="physicalNote"
+                    placeholder="anything else..."
+                ></textarea>
+
+            </div>
 
         </div>
 
         <button
-            class="primary"
-            style="margin-top:15px"
-            onclick="verifyAdmin()"
+            class="submit-btn"
+            onclick="submitPhysicalTicket()"
         >
-            Unlock
+            submit application
         </button>
 
         <div
-            id="adminError"
-            class="status"
+            id="physicalStatus"
+            class="form-status"
         ></div>
 
     </div>
@@ -2502,103 +2494,167 @@ footer p{
 </div>
 
 
-<!-- ========================================================
+<!-- =========================================================
+     ADMIN PIN MODAL
+========================================================= -->
+
+<div
+    id="adminPinModal"
+    class="modal"
+>
+
+    <div
+        class="modal-box glass"
+        style="max-width:420px"
+    >
+
+        <button
+            class="modal-close"
+            onclick="closeModal('adminPinModal')"
+        >
+            ×
+        </button>
+
+        <div class="modal-title">
+            private.
+        </div>
+
+        <p
+            class="muted"
+            style="
+                font-size:12px;
+                line-height:1.8;
+                margin-bottom:20px;
+            "
+        >
+            Enter the administrator password.
+        </p>
+
+        <div class="field">
+
+            <label>
+                password
+            </label>
+
+            <input
+                id="adminPassword"
+                type="password"
+                placeholder="••••••••••"
+                onkeydown="if(event.key==='Enter') verifyAdmin()"
+            >
+
+        </div>
+
+        <button
+            class="submit-btn"
+            onclick="verifyAdmin()"
+        >
+            unlock
+        </button>
+
+        <div
+            id="adminLoginStatus"
+            class="form-status"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      ADMIN PANEL
-======================================================== -->
+========================================================= -->
 
 <div
     id="adminModal"
     class="modal"
 >
 
-    <div class="modal-card">
+    <div class="modal-box glass">
 
-        <div class="modal-head">
+        <button
+            class="modal-close"
+            onclick="closeModal('adminModal')"
+        >
+            ×
+        </button>
 
-            <h2>
-                Admin
-            </h2>
-
-            <button
-                class="close"
-                onclick="closeModal('adminModal')"
-            >
-                ×
-            </button>
-
+        <div class="modal-title">
+            admin.
         </div>
-
 
         <div class="admin-tabs">
 
             <button
                 class="admin-tab active"
-                onclick="adminTab('content',this)"
+                onclick="switchAdminTab('letterAdmin',this)"
             >
-                Content
+                Letter
             </button>
 
             <button
                 class="admin-tab"
-                onclick="adminTab('galleryAdmin',this)"
+                onclick="switchAdminTab('galleryAdmin',this)"
             >
                 Photos
             </button>
 
             <button
                 class="admin-tab"
-                onclick="adminTab('giftsAdmin',this)"
+                onclick="switchAdminTab('giftAdmin',this)"
             >
                 Gifts
             </button>
 
             <button
                 class="admin-tab"
-                onclick="adminTab('reasonsAdmin',this)"
+                onclick="switchAdminTab('reasonAdmin',this)"
             >
                 Reasons
             </button>
 
             <button
                 class="admin-tab"
-                onclick="adminTab('messagesAdmin',this)"
+                onclick="switchAdminTab('messagesAdmin',this)"
             >
                 Messages
             </button>
 
             <button
                 class="admin-tab"
-                onclick="adminTab('ticketsAdmin',this)"
+                onclick="switchAdminTab('physicalAdmin',this)"
             >
                 Tickets
+            </button>
+
+            <button
+                class="admin-tab"
+                onclick="switchAdminTab('wishesAdmin',this)"
+            >
+                Wishes
             </button>
 
         </div>
 
 
-        <!-- CONTENT -->
+        <!-- LETTER ADMIN -->
 
         <div
-            id="content"
-            class="admin-section active"
+            id="letterAdmin"
+            class="admin-page active"
         >
-
-            <div class="admin-help">
-                Write or change the letter here.
-                It will appear on the public page and be stored
-                in Firestore.
-            </div>
 
             <div class="field">
 
                 <label>
-                    Birthday letter
+                    birthday letter
                 </label>
 
                 <textarea
                     id="adminLetter"
-                    style="min-height:260px"
-                    placeholder="Write the letter here..."
+                    style="min-height:250px"
+                    placeholder="Write the letter here. Leave empty if you don't want a letter displayed."
                 ></textarea>
 
             </div>
@@ -2606,181 +2662,178 @@ footer p{
             <div class="admin-actions">
 
                 <button
-                    class="primary"
+                    class="admin-btn primary"
                     onclick="saveLetter()"
                 >
-                    Save letter
+                    save letter
                 </button>
 
                 <button
-                    class="secondary"
-                    onclick="removeLetter()"
+                    class="admin-btn danger"
+                    onclick="deleteLetter()"
                 >
-                    Remove letter
+                    remove letter
                 </button>
 
             </div>
-
-            <div
-                id="letterAdminStatus"
-                class="status"
-            ></div>
 
         </div>
 
 
-        <!-- PHOTOS -->
+        <!-- GALLERY ADMIN -->
 
         <div
             id="galleryAdmin"
-            class="admin-section"
+            class="admin-page"
         >
-
-            <div class="admin-help">
-                There are no default/random photos.
-                Add your own image URLs here.
-                You can also replace or delete existing images.
-            </div>
 
             <div class="field">
 
                 <label>
-                    Image URL
+                    photo URL
                 </label>
 
                 <input
-                    id="newImageURL"
+                    id="photoURL"
+                    type="url"
                     placeholder="https://..."
                 >
 
             </div>
 
-            <button
-                class="primary"
-                style="margin-top:12px"
-                onclick="addImage()"
-            >
-                Add photo
-            </button>
+            <div class="admin-actions">
 
-            <div
-                id="galleryAdminList"
-                class="admin-list"
-            ></div>
+                <button
+                    class="admin-btn primary"
+                    onclick="addPhotoURL()"
+                >
+                    add photo URL
+                </button>
 
-        </div>
-
-
-        <!-- GIFTS -->
-
-        <div
-            id="giftsAdmin"
-            class="admin-section"
-        >
-
-            <div class="admin-help">
-                Change the three gift titles and messages.
             </div>
 
-            <div id="giftAdminList"></div>
+            <div style="height:20px"></div>
 
-            <button
-                class="primary"
-                style="margin-top:15px"
-                onclick="saveGifts()"
-            >
-                Save gifts
-            </button>
+            <div class="field">
 
-            <div
-                id="giftStatus"
-                class="status"
-            ></div>
+                <label>
+                    or upload image
+                </label>
 
-        </div>
+                <input
+                    id="photoFile"
+                    type="file"
+                    accept="image/*"
+                >
 
+            </div>
 
-        <!-- REASONS -->
+            <div class="admin-actions">
 
-        <div
-            id="reasonsAdmin"
-            class="admin-section"
-        >
+                <button
+                    class="admin-btn primary"
+                    onclick="uploadPhoto()"
+                >
+                    upload to Firebase
+                </button>
 
-            <div class="admin-help">
-                Add, remove or change the reasons shown on the
-                flip card.
             </div>
 
             <div
-                id="reasonAdminList"
-                class="admin-list"
-            ></div>
-
-            <button
-                class="secondary"
-                style="margin-top:15px"
-                onclick="addReasonField()"
-            >
-                + Add reason
-            </button>
-
-            <br>
-
-            <button
-                class="primary"
-                style="margin-top:10px"
-                onclick="saveReasons()"
-            >
-                Save reasons
-            </button>
-
-            <div
-                id="reasonStatus"
-                class="status"
+                id="adminGalleryList"
+                style="margin-top:20px"
             ></div>
 
         </div>
 
 
-        <!-- MESSAGES -->
+        <!-- GIFTS ADMIN -->
+
+        <div
+            id="giftAdmin"
+            class="admin-page"
+        >
+
+            <div
+                id="giftAdminList"
+            ></div>
+
+        </div>
+
+
+        <!-- REASONS ADMIN -->
+
+        <div
+            id="reasonAdmin"
+            class="admin-page"
+        >
+
+            <div class="field">
+
+                <label>
+                    reasons
+                </label>
+
+                <textarea
+                    id="adminReasons"
+                    style="min-height:220px"
+                    placeholder="One reason per line"
+                ></textarea>
+
+            </div>
+
+            <div class="admin-actions">
+
+                <button
+                    class="admin-btn primary"
+                    onclick="saveReasons()"
+                >
+                    save reasons
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGES ADMIN -->
 
         <div
             id="messagesAdmin"
-            class="admin-section"
+            class="admin-page"
         >
-
-            <div class="admin-help">
-                Messages submitted from the public form appear here.
-            </div>
 
             <div
                 id="messagesList"
-                class="admin-list"
-            >
-                Loading...
-            </div>
+            ></div>
 
         </div>
 
 
-        <!-- TICKETS -->
+        <!-- PHYSICAL TICKETS ADMIN -->
 
         <div
-            id="ticketsAdmin"
-            class="admin-section"
+            id="physicalAdmin"
+            class="admin-page"
         >
 
-            <div class="admin-help">
-                Physical ticket applications appear here.
-            </div>
+            <div
+                id="physicalList"
+            ></div>
+
+        </div>
+
+
+        <!-- WISHES ADMIN -->
+
+        <div
+            id="wishesAdmin"
+            class="admin-page"
+        >
 
             <div
-                id="ticketsList"
-                class="admin-list"
-            >
-                Loading...
-            </div>
+                id="wishesList"
+            ></div>
 
         </div>
 
@@ -2789,425 +2842,142 @@ footer p{
 </div>
 
 
-<div id="toast"></div>
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
 
 
-<!-- ========================================================
+<!-- =========================================================
      FIREBASE
-======================================================== -->
+========================================================= -->
 
 <script type="module">
 
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 
 import {
     getFirestore,
-    doc,
-    getDoc,
-    setDoc,
     collection,
     addDoc,
-    onSnapshot,
+    getDocs,
+    getDoc,
+    doc,
+    setDoc,
+    deleteDoc,
+    query,
+    orderBy,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-storage.js";
 
 
-/*
-==============================================================
-PASTE YOUR FIREBASE CONFIG HERE
-==============================================================
-*/
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
 
     apiKey:
-        "YOUR_API_KEY",
+        "AIzaSyA3D4BtBueaaeMoqFEaY8sV2DZRIB0W_Po",
 
     authDomain:
-        "YOUR_PROJECT.firebaseapp.com",
+        "mygurl-dishu.firebaseapp.com",
 
     projectId:
-        "YOUR_PROJECT_ID",
+        "mygurl-dishu",
 
     storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
+        "mygurl-dishu.firebasestorage.app",
 
     messagingSenderId:
-        "YOUR_MESSAGING_SENDER_ID",
+        "863805593550",
 
     appId:
-        "YOUR_APP_ID"
+        "1:863805593550:web:4a5b2af6d1cc34fcbcfd9f",
+
+    measurementId:
+        "G-D0B1W5BMTN"
 
 };
 
 
-let db = null;
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-try{
+const firebaseApp =
+    initializeApp(firebaseConfig);
 
-    if(
-        firebaseConfig.apiKey !== "YOUR_API_KEY" &&
-        firebaseConfig.projectId !== "YOUR_PROJECT_ID"
-    ){
+const db =
+    getFirestore(firebaseApp);
 
-        const app =
-            initializeApp(firebaseConfig);
-
-        db =
-            getFirestore(app);
-
-        window.db =
-            db;
-
-        window.firebaseReady =
-            true;
-
-    }else{
-
-        window.firebaseReady =
-            false;
-
-    }
-
-}catch(error){
-
-    console.error(error);
-
-    window.firebaseReady =
-        false;
-
-}
+const storage =
+    getStorage(firebaseApp);
 
 
 /*
-==============================================================
-DEFAULT CONTENT
-
-IMPORTANT:
-Gallery is intentionally EMPTY.
-Letter is intentionally EMPTY.
-==============================================================
+    Make Firebase available to the main application
+    script below.
 */
 
-window.siteData = {
+window.firebaseApp = firebaseApp;
+window.db = db;
+window.storage = storage;
 
-    letter:"",
+window.firestore = {
 
-    gallery:[],
-
-    gifts:[
-
-        {
-            title:"A little love",
-            text:"Something small, but meant entirely for you."
-        },
-
-        {
-            title:"A secret",
-            text:"Some things deserve to stay between us."
-        },
-
-        {
-            title:"A promise",
-            text:"More memories are still waiting to happen."
-        }
-
-    ],
-
-    reasons:[
-
-        "You make ordinary moments feel like memories."
-
-    ]
+    collection,
+    addDoc,
+    getDocs,
+    getDoc,
+    doc,
+    setDoc,
+    deleteDoc,
+    query,
+    orderBy,
+    serverTimestamp
 
 };
 
+window.firebaseStorage = {
 
-/*
-==============================================================
-LOAD CONTENT
-==============================================================
-*/
+    ref,
+    uploadBytes,
+    getDownloadURL
 
-async function loadContent(){
+};
 
-    if(!window.firebaseReady){
+window.firebaseReady = true;
 
-        applyContent();
-
-        return;
-
-    }
-
-    try{
-
-        const ref =
-            doc(
-                db,
-                "siteContent",
-                "main"
-            );
-
-        const snap =
-            await getDoc(ref);
-
-        if(snap.exists()){
-
-            const data =
-                snap.data();
-
-            window.siteData = {
-
-                ...window.siteData,
-
-                ...data
-
-            };
-
-        }
-
-    }catch(error){
-
-        console.error(
-            "Could not load site content:",
-            error
-        );
-
-    }
-
-    applyContent();
-
-}
-
-
-/*
-==============================================================
-LIVE CONTENT SYNC
-==============================================================
-*/
-
-function listenContent(){
-
-    if(!window.firebaseReady)
-        return;
-
-    const ref =
-        doc(
-            db,
-            "siteContent",
-            "main"
-        );
-
-    onSnapshot(
-        ref,
-        snapshot => {
-
-            if(snapshot.exists()){
-
-                window.siteData = {
-
-                    ...window.siteData,
-
-                    ...snapshot.data()
-
-                };
-
-                applyContent();
-
-                renderAdmin();
-
-            }
-
-        }
-    );
-
-}
-
-
-/*
-==============================================================
-SAVE CONTENT
-==============================================================
-*/
-
-window.saveSiteContent =
-    async function(){
-
-        if(!window.firebaseReady){
-
-            throw new Error(
-                "Firebase is not configured."
-            );
-
-        }
-
-        const ref =
-            doc(
-                db,
-                "siteContent",
-                "main"
-            );
-
-        await setDoc(
-            ref,
-            window.siteData,
-            {
-                merge:true
-            }
-        );
-
-    };
-
-
-/*
-==============================================================
-FORM SUBMISSION
-==============================================================
-*/
-
-window.saveMessage =
-    async function(data){
-
-        if(!window.firebaseReady){
-
-            throw new Error(
-                "Firebase is not configured."
-            );
-
-        }
-
-        await addDoc(
-            collection(
-                db,
-                "messages"
-            ),
-            {
-                ...data,
-                createdAt:
-                    serverTimestamp()
-            }
-        );
-
-    };
-
-
-window.savePhysicalTicket =
-    async function(data){
-
-        if(!window.firebaseReady){
-
-            throw new Error(
-                "Firebase is not configured."
-            );
-
-        }
-
-        await addDoc(
-            collection(
-                db,
-                "physicalTickets"
-            ),
-            {
-                ...data,
-                createdAt:
-                    serverTimestamp()
-            }
-        );
-
-    };
-
-
-/*
-==============================================================
-PUBLIC LIVE SUBMISSIONS FOR ADMIN
-==============================================================
-*/
-
-window.listenMessages =
-    function(callback){
-
-        if(!window.firebaseReady)
-            return;
-
-        onSnapshot(
-            collection(
-                db,
-                "messages"
-            ),
-            snapshot => {
-
-                const items=[];
-
-                snapshot.forEach(
-                    d => {
-
-                        items.push({
-                            id:d.id,
-                            ...d.data()
-                        });
-
-                    }
-                );
-
-                callback(items);
-
-            }
-        );
-
-    };
-
-
-window.listenTickets =
-    function(callback){
-
-        if(!window.firebaseReady)
-            return;
-
-        onSnapshot(
-            collection(
-                db,
-                "physicalTickets"
-            ),
-            snapshot => {
-
-                const items=[];
-
-                snapshot.forEach(
-                    d => {
-
-                        items.push({
-                            id:d.id,
-                            ...d.data()
-                        });
-
-                    }
-                );
-
-                callback(items);
-
-            }
-        );
-
-    };
-
-
-loadContent();
-
-listenContent();
+window.dispatchEvent(
+    new Event("firebase-ready")
+);
 
 </script>
 
 
-<!-- ========================================================
-     APPLICATION JS
-======================================================== -->
+<!-- =========================================================
+     MAIN JAVASCRIPT
+========================================================= -->
 
 <script>
 
+"use strict";
+
+
 /* =========================================================
-   SETTINGS
+   CONFIG
 ========================================================= */
 
 const PASSCODE =
@@ -3216,360 +2986,502 @@ const PASSCODE =
 const ADMIN_PASSWORD =
     "drgstkahq2";
 
-let adminClicks = 0;
+const QR_IMAGE =
+    "qr-code.png";
 
-let adminTimer;
+
+/* =========================================================
+   DEFAULT DATA
+========================================================= */
+
+/*
+   IMPORTANT:
+   No random/default photos are included.
+*/
+
+let appData = {
+
+    letter: "",
+
+    gifts: [
+
+        {
+            id:"gift1",
+            icon:"♡",
+            title:"open me",
+            text:"Something small, but chosen especially for you."
+        },
+
+        {
+            id:"gift2",
+            icon:"✦",
+            title:"another one",
+            text:"Because one surprise never feels like enough."
+        },
+
+        {
+            id:"gift3",
+            icon:"∞",
+            title:"last one",
+            text:"This one is meant to stay with you."
+        }
+
+    ],
+
+    gallery: [],
+
+    reasons: [
+
+        "Because you make ordinary moments feel special.",
+
+        "Because your presence makes things a little lighter.",
+
+        "Because being yourself is already enough.",
+
+        "Because some people simply become unforgettable."
+
+    ]
+
+};
+
+
+let currentReason = 0;
+
+let adminUnlocked = false;
+
+let adminClickCount = 0;
+
+let adminClickTimer = null;
+
+
+/* =========================================================
+   LOCAL DATA
+========================================================= */
+
+function saveLocalData(){
+
+    localStorage.setItem(
+        "myGwenLocalData",
+        JSON.stringify(appData)
+    );
+
+}
+
+
+function loadLocalData(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(
+                "myGwenLocalData"
+            );
+
+        if(saved){
+
+            const parsed =
+                JSON.parse(saved);
+
+            appData = {
+                ...appData,
+                ...parsed
+            };
+
+        }
+
+    }catch(error){
+
+        console.warn(
+            "Could not load local data.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   FIREBASE DATA
+========================================================= */
+
+async function loadFirestoreData(){
+
+    if(!window.firebaseReady)
+        return;
+
+    try{
+
+        const settingsRef =
+            window.firestore.doc(
+                window.db,
+                "myGwen",
+                "settings"
+            );
+
+        const settingsSnap =
+            await window.firestore.getDoc(
+                settingsRef
+            );
+
+        if(settingsSnap.exists()){
+
+            const data =
+                settingsSnap.data();
+
+            appData = {
+
+                ...appData,
+
+                ...data
+
+            };
+
+        }
+
+        renderAll();
+
+        await loadMessagesCount();
+
+    }catch(error){
+
+        console.error(
+            "Firestore loading error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE SETTINGS
+========================================================= */
+
+async function saveSettingsToFirestore(){
+
+    if(!window.firebaseReady)
+        return false;
+
+    try{
+
+        await window.firestore.setDoc(
+
+            window.firestore.doc(
+                window.db,
+                "myGwen",
+                "settings"
+            ),
+
+            appData,
+
+            {
+                merge:true
+            }
+
+        );
+
+        return true;
+
+    }catch(error){
+
+        console.error(error);
+
+        return false;
+
+    }
+
+}
 
 
 /* =========================================================
    ENTRY
 ========================================================= */
 
-function unlock(){
-
-    const input =
-        document.getElementById("passInput");
-
-    const error =
-        document.getElementById("entryError");
-
-    if(
-        input.value.trim() !==
-        PASSCODE
-    ){
-
-        error.textContent =
-            "Not quite. Try again.";
-
-        input.animate(
-            [
-                {transform:"translateX(-5px)"},
-                {transform:"translateX(5px)"},
-                {transform:"translateX(-3px)"},
-                {transform:"translateX(0)"}
-            ],
-            {
-                duration:350
-            }
-        );
-
-        return;
-
-    }
-
-    error.textContent="";
-
-    startIntro();
-
-}
-
-
-document
-    .getElementById("passInput")
-    .addEventListener(
-        "keydown",
-        e => {
-
-            if(e.key==="Enter")
-                unlock();
-
-        }
+const passInputs =
+    document.querySelectorAll(
+        ".pass-input"
     );
 
 
-/* =========================================================
-   INTRO
-========================================================= */
+passInputs.forEach(
+    (input,index)=>{
 
-function startIntro(){
+        input.addEventListener(
+            "input",
+            ()=>{
 
-    document
-        .getElementById("entry")
-        .classList
-        .add("hide");
+                input.value =
+                    input.value
+                    .slice(-1);
 
-    const intro =
-        document.getElementById("intro");
+                if(
+                    input.value &&
+                    index <
+                    passInputs.length-1
+                ){
 
-    const number =
-        document.getElementById("countNumber");
-
-    intro.style.display="flex";
-
-    let n=3;
-
-    number.textContent=n;
-
-    const timer =
-        setInterval(
-            () => {
-
-                n--;
-
-                if(n>0){
-
-                    number.textContent=n;
-
-                }else{
-
-                    number.textContent="♡";
-
-                    clearInterval(timer);
-
-                    setTimeout(
-                        () => {
-
-                            intro.style.opacity="0";
-
-                            setTimeout(
-                                () => {
-
-                                    intro.style.display="none";
-
-                                    document
-                                        .getElementById("main")
-                                        .classList
-                                        .add("visible");
-
-                                    startPage();
-
-                                },
-                                650
-                            );
-
-                        },
-                        800
-                    );
+                    passInputs[
+                        index+1
+                    ].focus();
 
                 }
 
-            },
-            850
-        );
-
-}
-
-
-/* =========================================================
-   PAGE START
-========================================================= */
-
-function startPage(){
-
-    startCountdown();
-
-    renderGallery();
-
-    renderGifts();
-
-    renderReasons();
-
-    renderLetter();
-
-    renderJar();
-
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-function startCountdown(){
-
-    function update(){
-
-        const now =
-            new Date();
-
-        let target =
-            new Date(
-                "2026-10-03T00:00:00"
-            );
-
-        if(now>=target){
-
-            target =
-                new Date(
-                    "2027-10-03T00:00:00"
-                );
-
-        }
-
-        const diff =
-            target-now;
-
-        const d =
-            Math.floor(
-                diff/86400000
-            );
-
-        const h =
-            Math.floor(
-                (diff%86400000)/3600000
-            );
-
-        const m =
-            Math.floor(
-                (diff%3600000)/60000
-            );
-
-        const s =
-            Math.floor(
-                (diff%60000)/1000
-            );
-
-        document.getElementById("days")
-            .textContent =
-            String(d).padStart(2,"0");
-
-        document.getElementById("hours")
-            .textContent =
-            String(h).padStart(2,"0");
-
-        document.getElementById("minutes")
-            .textContent =
-            String(m).padStart(2,"0");
-
-        document.getElementById("seconds")
-            .textContent =
-            String(s).padStart(2,"0");
-
-    }
-
-    update();
-
-    setInterval(update,1000);
-
-}
-
-
-/* =========================================================
-   NAV
-========================================================= */
-
-function go(id){
-
-    const el =
-        document.getElementById(id);
-
-    if(el){
-
-        el.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    }
-
-}
-
-
-/* =========================================================
-   CAKE
-========================================================= */
-
-function blowCandles(){
-
-    document
-        .querySelectorAll(".flame")
-        .forEach(
-            flame => {
-
-                flame.style.opacity="0";
-
-                flame.style.transform =
-                    "translateX(-50%) translateY(-20px) scale(.4)";
+                checkPasscode();
 
             }
         );
 
-    showToast(
-        "Wish made. ♡"
+
+        input.addEventListener(
+            "keydown",
+            event=>{
+
+                if(
+                    event.key === "Backspace" &&
+                    !input.value &&
+                    index > 0
+                ){
+
+                    passInputs[
+                        index-1
+                    ].focus();
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+function checkPasscode(){
+
+    const value =
+        Array.from(
+            passInputs
+        )
+        .map(input=>input.value)
+        .join("");
+
+    if(
+        value.toLowerCase() ===
+        PASSCODE.toLowerCase()
+    ){
+
+        startExperience();
+
+    }
+
+}
+
+
+function startExperience(){
+
+    document
+        .getElementById("entry")
+        .style.display = "none";
+
+    const countdown =
+        document.getElementById(
+            "countdown"
+        );
+
+    countdown.style.display =
+        "flex";
+
+    const number =
+        document.getElementById(
+            "countNumber"
+        );
+
+    const sequence =
+        ["3","2","1","♡"];
+
+    let index = 0;
+
+    function next(){
+
+        if(index >= sequence.length){
+
+            countdown.style.display =
+                "none";
+
+            document
+                .getElementById("app")
+                .classList.add("visible");
+
+            birthdayBurst();
+
+            return;
+
+        }
+
+        number.textContent =
+            sequence[index];
+
+        number.style.animation =
+            "none";
+
+        void number.offsetWidth;
+
+        number.style.animation =
+            "countPop .8s ease forwards";
+
+        index++;
+
+        setTimeout(
+            next,
+            800
+        );
+
+    }
+
+    next();
+
+}
+
+
+/* =========================================================
+   BIRTHDAY BURST
+========================================================= */
+
+function birthdayBurst(){
+
+    createParticles(70);
+
+    for(
+        let i=0;
+        i<12;
+        i++
+    ){
+
+        setTimeout(
+            createHeart,
+            i*180
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING HEART
+========================================================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+    heart.className =
+        "heart-float";
+
+    heart.textContent =
+        Math.random() > .5
+        ? "♡"
+        : "♥";
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.bottom =
+        "-30px";
+
+    heart.style.color =
+        Math.random()>.5
+        ? "#e8a0b4"
+        : "#e8c78d";
+
+    heart.style.fontSize =
+        12 +
+        Math.random()*22 +
+        "px";
+
+    document.body.appendChild(
+        heart
     );
 
     setTimeout(
-        () => {
-
-            document
-                .querySelectorAll(".flame")
-                .forEach(
-                    flame => {
-
-                        flame.style.opacity="1";
-
-                        flame.style.transform =
-                            "translateX(-50%)";
-
-                    }
-                );
-
-        },
-        3000
+        ()=>heart.remove(),
+        5200
     );
 
 }
 
 
 /* =========================================================
-   GIFTS
+   PARTICLES
 ========================================================= */
 
-function renderGifts(){
+function createParticles(amount=35){
 
-    const gifts =
-        window.siteData.gifts || [];
-
-    gifts.forEach(
-        (gift,i) => {
-
-            const title =
-                document.getElementById(
-                    "giftTitle"+i
-                );
-
-            const text =
-                document.getElementById(
-                    "giftText"+i
-                );
-
-            if(title)
-                title.textContent =
-                    gift.title || "";
-
-            if(text)
-                text.textContent =
-                    gift.text || "";
-
-        }
-    );
-
-}
-
-
-function openGift(card,index){
-
-    card.classList.toggle("opened");
-
-    const p =
-        card.querySelector("p");
-
-    if(
-        card.classList.contains("opened")
+    for(
+        let i=0;
+        i<amount;
+        i++
     ){
 
-        p.textContent =
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            "50vw";
+
+        particle.style.top =
+            "45vh";
+
+        particle.style.background =
             [
-                "You deserve more love than a tiny website could ever fit. ♡",
-                "Some secrets are more beautiful when they're kept between two people.",
-                "This isn't the last page. There are still many chapters left."
-            ][index];
+                "#e8a0b4",
+                "#e8c78d",
+                "#ffffff",
+                "#c4b5fd"
+            ][
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
 
-    }else{
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random()*700-350
+            ) + "px"
+        );
 
-        p.textContent =
-            window.siteData
-                .gifts[index]
-                .text;
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random()*600-300
+            ) + "px"
+        );
+
+        particle.style.setProperty(
+            "--r",
+            (
+                Math.random()*720-360
+            ) + "deg"
+        );
+
+        document.body.appendChild(
+            particle
+        );
+
+        setTimeout(
+            ()=>particle.remove(),
+            3000
+        );
 
     }
 
@@ -3577,66 +3489,26 @@ function openGift(card,index){
 
 
 /* =========================================================
-   GALLERY
+   RENDER EVERYTHING
 ========================================================= */
 
-function renderGallery(){
+function renderAll(){
 
-    const gallery =
-        document.getElementById("gallery");
+    renderLetter();
 
-    gallery.innerHTML="";
+    renderGifts();
 
-    const photos =
-        window.siteData.gallery || [];
+    renderGallery();
 
-    if(!photos.length){
+    renderReasons();
 
-        gallery.innerHTML = `
+    renderJarCount();
 
-            <div class="empty-gallery">
+    renderAdminGallery();
 
-                <strong>
-                    No memories yet.
-                </strong>
+    renderAdminGifts();
 
-                <span>
-                    Photos can be added privately from the admin panel.
-                </span>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    photos.forEach(
-        photo => {
-
-            const item =
-                document.createElement("div");
-
-            item.className =
-                "gallery-item";
-
-            const img =
-                document.createElement("img");
-
-            img.src =
-                photo.image || photo;
-
-            img.loading="lazy";
-
-            img.alt="Memory";
-
-            item.appendChild(img);
-
-            gallery.appendChild(item);
-
-        }
-    );
+    renderAdminReasons();
 
 }
 
@@ -3647,27 +3519,202 @@ function renderGallery(){
 
 function renderLetter(){
 
-    const card =
-        document.getElementById("letterCard");
+    const section =
+        document.getElementById(
+            "letterSection"
+        );
 
     const content =
-        document.getElementById("letterContent");
+        document.getElementById(
+            "letterContent"
+        );
 
-    const letter =
-        window.siteData.letter || "";
+    if(
+        !appData.letter ||
+        !appData.letter.trim()
+    ){
 
-    if(!letter.trim()){
-
-        card.classList.add("empty");
+        section.classList.add(
+            "hidden"
+        );
 
         return;
 
     }
 
-    card.classList.remove("empty");
+    section.classList.remove(
+        "hidden"
+    );
 
     content.textContent =
-        letter;
+        appData.letter;
+
+    const adminLetter =
+        document.getElementById(
+            "adminLetter"
+        );
+
+    if(adminLetter)
+        adminLetter.value =
+            appData.letter;
+
+}
+
+
+/* =========================================================
+   GIFTS
+========================================================= */
+
+function renderGifts(){
+
+    const grid =
+        document.getElementById(
+            "giftGrid"
+        );
+
+    if(!grid)
+        return;
+
+    grid.innerHTML = "";
+
+    appData.gifts.forEach(
+        (gift,index)=>{
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "gift glass";
+
+            card.innerHTML = `
+
+                <div class="gift-number">
+                    0${index+1}
+                </div>
+
+                <div class="gift-icon">
+                    ${escapeHTML(gift.icon)}
+                </div>
+
+                <div>
+
+                    <div class="gift-title">
+                        ${escapeHTML(gift.title)}
+                    </div>
+
+                    <div class="gift-text">
+                        ${escapeHTML(gift.text)}
+                    </div>
+
+                </div>
+
+            `;
+
+            card.addEventListener(
+                "click",
+                ()=>{
+
+                    createParticles(20);
+
+                    showToast(
+                        gift.title
+                    );
+
+                }
+            );
+
+            grid.appendChild(card);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+function renderGallery(){
+
+    const grid =
+        document.getElementById(
+            "galleryGrid"
+        );
+
+    if(!grid)
+        return;
+
+    grid.innerHTML = "";
+
+    if(
+        !appData.gallery ||
+        appData.gallery.length === 0
+    ){
+
+        grid.innerHTML = `
+
+            <div class="no-photos">
+
+                <div style="
+                    font-family:'DM Serif Display';
+                    font-size:30px;
+                    margin-bottom:8px;
+                ">
+                    no memories yet.
+                </div>
+
+                <div style="font-size:11px">
+                    Photos added from the admin panel
+                    will appear here.
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    appData.gallery.forEach(
+        (url,index)=>{
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "photo-card";
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+            img.src = url;
+
+            img.alt =
+                "Memory " +
+                (index+1);
+
+            img.loading =
+                "lazy";
+
+            img.onerror = ()=>{
+                card.remove();
+            };
+
+            card.appendChild(img);
+
+            grid.appendChild(card);
+
+        }
+    );
 
 }
 
@@ -3676,23 +3723,45 @@ function renderLetter(){
    REASONS
 ========================================================= */
 
-let reasonIndex=0;
-
 function renderReasons(){
 
-    const reasons =
-        window.siteData.reasons || [];
+    if(
+        !appData.reasons ||
+        !appData.reasons.length
+    ){
 
-    if(reasons.length){
+        appData.reasons = [
+            "Because you're you."
+        ];
 
-        document
-            .getElementById("reasonText")
-            .textContent =
-            reasons[0];
+    }
+
+    currentReason =
+        Math.floor(
+            Math.random() *
+            appData.reasons.length
+        );
+
+    const back =
+        document.getElementById(
+            "reasonBack"
+        );
+
+    if(back){
+
+        back.textContent =
+            appData.reasons[
+                currentReason
+            ];
 
     }
 
 }
+
+
+/* =========================================================
+   FLIP REASON
+========================================================= */
 
 function flipReason(){
 
@@ -3701,367 +3770,521 @@ function flipReason(){
             "reasonCard"
         );
 
-    const reasons =
-        window.siteData.reasons || [];
+    card.classList.toggle(
+        "flipped"
+    );
 
-    card.classList.toggle("flipped");
+}
 
-    if(
-        card.classList.contains("flipped") &&
-        reasons.length
-    ){
 
-        reasonIndex =
-            (reasonIndex+1)%reasons.length;
+/* =========================================================
+   CAKE
+========================================================= */
+
+let candlesBlown =
+    false;
+
+
+function blowCandles(){
+
+    if(candlesBlown){
 
         document
-            .getElementById("reasonText")
-            .textContent =
-            reasons[reasonIndex];
+            .querySelectorAll(
+                ".candle"
+            )
+            .forEach(
+                candle=>
+                    candle.classList.remove(
+                        "blown"
+                    )
+            );
+
+        candlesBlown =
+            false;
+
+        return;
+
+    }
+
+    candlesBlown =
+        true;
+
+    document
+        .querySelectorAll(
+            ".candle"
+        )
+        .forEach(
+            candle=>
+                candle.classList.add(
+                    "blown"
+                )
+        );
+
+    createParticles(80);
+
+    for(
+        let i=0;
+        i<15;
+        i++
+    ){
+
+        setTimeout(
+            createHeart,
+            i*100
+        );
+
+    }
+
+    showToast(
+        "Wish made ♡"
+    );
+
+}
+
+
+/* =========================================================
+   WISH JAR
+========================================================= */
+
+let wishCount = 0;
+
+
+async function loadMessagesCount(){
+
+    if(!window.firebaseReady)
+        return;
+
+    try{
+
+        const wishesSnap =
+            await window.firestore.getDocs(
+                window.firestore.collection(
+                    window.db,
+                    "myGwen",
+                    "wishes",
+                    "items"
+                )
+            );
+
+        wishCount =
+            wishesSnap.size;
+
+        renderJarCount();
+
+    }catch(error){
+
+        console.warn(
+            "Could not load wish count.",
+            error
+        );
 
     }
 
 }
 
 
-/* =========================================================
-   HEART JAR
-========================================================= */
+function renderJarCount(){
 
-let jarCount =
-    Number(
-        localStorage.getItem(
-            "gwenJarHearts"
-        ) || 0
-    );
-
-function renderJar(){
-
-    const visible =
-        Math.min(jarCount,50);
-
-    const height =
-        Math.min(
-            18+(visible*1.52),
-            94
+    const count =
+        document.getElementById(
+            "jarCount"
         );
 
-    document
-        .getElementById("jarLiquid")
-        .style.height =
-        height+"%";
+    const liquid =
+        document.getElementById(
+            "jarLiquid"
+        );
 
-    document
-        .getElementById("jarCount")
-        .textContent =
-        jarCount+
+    if(!count || !liquid)
+        return;
+
+    count.textContent =
+        wishCount +
         (
-            jarCount===1
-                ?" heart collected"
-                :" hearts collected"
+            wishCount === 1
+            ? " heart"
+            : " hearts"
         );
 
-    document
-        .getElementById("jarFull")
-        .textContent =
-        jarCount>=50
-            ?"The jar is full. ♡"
-            :(50-jarCount)+" hearts until full";
+    /*
+        Gradually fills the jar.
+        It never exceeds 88%.
+    */
+
+    const fill =
+        Math.min(
+            88,
+            5 + wishCount * 5
+        );
+
+    liquid.style.height =
+        fill + "%";
+
+}
+
+
+function animateJarHeart(){
 
     const container =
         document.getElementById(
             "jarHearts"
         );
 
-    container.innerHTML="";
+    if(!container)
+        return;
 
-    const amount =
-        Math.min(jarCount,30);
+    const heart =
+        document.createElement(
+            "span"
+        );
 
-    for(
-        let i=0;
-        i<amount;
-        i++
-    ){
+    heart.className =
+        "jar-heart";
 
-        const heart =
-            document.createElement("span");
+    heart.textContent =
+        Math.random() > .4
+        ? "♥"
+        : "♡";
 
-        heart.className=
-            "jar-heart";
+    heart.style.left =
+        (
+            15 +
+            Math.random()*70
+        ) + "%";
 
-        heart.textContent =
-            Math.random()>.45
-                ?"♥"
-                :"♡";
+    heart.style.setProperty(
+        "--drift",
+        (
+            Math.random()*60-30
+        ) + "px"
+    );
 
-        heart.style.left =
-            (7+Math.random()*82)+"%";
+    heart.style.color =
+        Math.random()>.5
+        ? "#e8a0b4"
+        : "#e8c78d";
 
-        heart.style.bottom =
-            (3+Math.random()*22)+"%";
+    heart.style.animationDuration =
+        (
+            3.8 +
+            Math.random()*2
+        ) + "s";
 
-        heart.style.fontSize =
-            (13+Math.random()*13)+"px";
+    container.appendChild(
+        heart
+    );
 
-        heart.style.animationDelay =
-            (-Math.random()*4)+"s";
-
-        container.appendChild(heart);
-
-    }
+    setTimeout(
+        ()=>heart.remove(),
+        6000
+    );
 
 }
 
-function addJarHeart(){
 
-    if(jarCount>=50){
+/*
+   Continuous gentle movement inside the jar.
+*/
 
-        showToast(
-            "The jar is already full. ♡"
+setInterval(
+    ()=>{
+
+        if(
+            wishCount > 0
+        ){
+
+            animateJarHeart();
+
+        }
+
+    },
+    1400
+);
+
+
+async function submitWish(){
+
+    const name =
+        document
+            .getElementById(
+                "wishName"
+            )
+            .value
+            .trim();
+
+    const mood =
+        document
+            .getElementById(
+                "wishMood"
+            )
+            .value;
+
+    const text =
+        document
+            .getElementById(
+                "wishText"
+            )
+            .value
+            .trim();
+
+    const status =
+        document.getElementById(
+            "wishStatus"
         );
+
+    if(!text){
+
+        status.textContent =
+            "Write something first.";
 
         return;
 
     }
 
-    jarCount++;
 
-    localStorage.setItem(
-        "gwenJarHearts",
-        jarCount
-    );
+    status.textContent =
+        "Saving...";
 
-    renderJar();
 
-    document
-        .querySelector(".jar")
-        .animate(
-            [
-                {transform:"scale(1)"},
-                {transform:"scale(1.04)"},
-                {transform:"scale(1)"}
-            ],
+    try{
+
+        await window.firestore.addDoc(
+
+            window.firestore.collection(
+                window.db,
+                "myGwen",
+                "wishes",
+                "items"
+            ),
+
             {
-                duration:400
+
+                name:
+                    name || "Anonymous",
+
+                mood,
+
+                text,
+
+                createdAt:
+                    window.firestore.serverTimestamp()
+
             }
+
         );
 
-}
+        wishCount++;
 
-renderJar();
+        renderJarCount();
+
+        for(
+            let i=0;
+            i<10;
+            i++
+        ){
+
+            setTimeout(
+                animateJarHeart,
+                i*100
+            );
+
+        }
+
+        document
+            .getElementById(
+                "wishText"
+            )
+            .value = "";
+
+        status.textContent =
+            "Added to the jar ♡";
+
+        showToast(
+            "Your heart is in the jar."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+            "Could not save. Check Firebase rules.";
+
+    }
+
+}
 
 
 /* =========================================================
    MESSAGE FORM
 ========================================================= */
 
-document
-    .getElementById("messageForm")
-    .addEventListener(
-        "submit",
-        async e => {
+async function submitMessage(){
 
-            e.preventDefault();
+    const name =
+        document
+            .getElementById(
+                "messageName"
+            )
+            .value
+            .trim();
 
-            const status =
-                document.getElementById(
-                    "messageStatus"
-                );
+    const relation =
+        document
+            .getElementById(
+                "messageRelation"
+            )
+            .value
+            .trim();
 
-            const data={
+    const message =
+        document
+            .getElementById(
+                "messageText"
+            )
+            .value
+            .trim();
 
-                name:
-                    document
-                        .getElementById("messageName")
-                        .value
-                        .trim(),
+    const status =
+        document.getElementById(
+            "messageStatus"
+        );
 
-                mood:
-                    document
-                        .getElementById("messageMood")
-                        .value,
 
-                message:
-                    document
-                        .getElementById("messageText")
-                        .value
-                        .trim()
+    if(!name || !message){
 
-            };
+        status.textContent =
+            "Please enter your name and message.";
 
-            status.textContent=
-                "Sending...";
+        return;
 
-            try{
+    }
 
-                await window.saveMessage(
-                    data
-                );
 
-                e.target.reset();
+    status.textContent =
+        "Sending...";
 
-                status.textContent=
-                    "Message saved. ♡";
 
-                showToast(
-                    "Message received."
-                );
+    try{
 
-            }catch(error){
+        await window.firestore.addDoc(
 
-                console.error(error);
+            window.firestore.collection(
+                window.db,
+                "myGwen",
+                "messages"
+            ),
 
-                status.textContent=
-                    "Firestore isn't connected yet.";
+            {
+
+                name,
+
+                relation,
+
+                message,
+
+                createdAt:
+                    window.firestore.serverTimestamp()
 
             }
 
-        }
-    );
+        );
 
+        document
+            .getElementById(
+                "messageName"
+            )
+            .value = "";
 
-/* =========================================================
-   PHYSICAL TICKET
-========================================================= */
+        document
+            .getElementById(
+                "messageRelation"
+            )
+            .value = "";
 
-function togglePhysical(){
+        document
+            .getElementById(
+                "messageText"
+            )
+            .value = "";
 
-    document
-        .getElementById("physical")
-        .classList
-        .toggle("show");
+        status.textContent =
+            "Message sent ♡";
+
+        showToast(
+            "Message saved."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+            "Could not send message. Check Firestore rules.";
+
+    }
 
 }
 
-document
-    .getElementById("physicalForm")
-    .addEventListener(
-        "submit",
-        async e => {
-
-            e.preventDefault();
-
-            const status =
-                document.getElementById(
-                    "physicalStatus"
-                );
-
-            status.textContent=
-                "Submitting...";
-
-            try{
-
-                await window.savePhysicalTicket({
-
-                    name:
-                        document
-                            .getElementById("physicalName")
-                            .value
-                            .trim(),
-
-                    contact:
-                        document
-                            .getElementById("physicalContact")
-                            .value
-                            .trim(),
-
-                    address:
-                        document
-                            .getElementById("physicalAddress")
-                            .value
-                            .trim(),
-
-                    event:
-                        "my Gwen Birthday",
-
-                    date:
-                        "03 October 2026"
-
-                });
-
-                e.target.reset();
-
-                status.textContent=
-                    "Application received. ♡";
-
-                showToast(
-                    "Physical ticket requested."
-                );
-
-            }catch(error){
-
-                console.error(error);
-
-                status.textContent=
-                    "Firestore isn't connected yet.";
-
-            }
-
-        }
-    );
-
 
 /* =========================================================
-   DOWNLOAD LOWER TICKET
+   TICKET DOWNLOAD
 ========================================================= */
 
 async function downloadTicket(){
 
-    const original =
+    const ticket =
         document.getElementById(
-            "ticketLower"
+            "ticketCapture"
         );
 
-    const clone =
-        original.cloneNode(true);
+    if(
+        typeof html2canvas ===
+        "undefined"
+    ){
 
-    clone.style.width =
-        original.offsetWidth+"px";
+        showToast(
+            "Ticket download library is loading."
+        );
 
-    clone.style.position=
-        "fixed";
+        return;
 
-    clone.style.left=
-        "-10000px";
+    }
 
-    clone.style.top=
-        "0";
-
-    clone.style.margin="0";
-
-    clone.style.borderRadius="0";
-
-    clone.style.background="#f2e9df";
-
-    document.body.appendChild(clone);
 
     showToast(
         "Preparing ticket..."
     );
 
+
     try{
 
         const canvas =
             await html2canvas(
-                clone,
+                ticket,
                 {
-                    backgroundColor:
-                        "#f2e9df",
 
                     scale:3,
 
-                    useCORS:true
+                    useCORS:true,
+
+                    backgroundColor:
+                        "#f5efe5"
+
                 }
             );
 
+
         const link =
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
 
-        link.download=
-            "my-Gwen-ticket.png";
+        link.download =
+            "my-Gwen-birthday-ticket.png";
 
-        link.href=
+        link.href =
             canvas.toDataURL(
                 "image/png"
             );
@@ -4069,7 +4292,7 @@ async function downloadTicket(){
         link.click();
 
         showToast(
-            "Ticket downloaded. ♡"
+            "Ticket downloaded."
         );
 
     }catch(error){
@@ -4077,57 +4300,146 @@ async function downloadTicket(){
         console.error(error);
 
         showToast(
-            "Couldn't create ticket."
+            "Could not create ticket."
         );
 
     }
-
-    clone.remove();
 
 }
 
 
 /* =========================================================
-   ADMIN SECRET
+   PHYSICAL TICKET
 ========================================================= */
 
-function adminClick(){
+async function submitPhysicalTicket(){
 
-    adminClicks++;
+    const name =
+        document
+            .getElementById(
+                "physicalName"
+            )
+            .value
+            .trim();
 
-    clearTimeout(adminTimer);
+    const contact =
+        document
+            .getElementById(
+                "physicalContact"
+            )
+            .value
+            .trim();
 
-    adminTimer =
-        setTimeout(
-            () => {
-                adminClicks=0;
-            },
-            1600
+    const address =
+        document
+            .getElementById(
+                "physicalAddress"
+            )
+            .value
+            .trim();
+
+    const note =
+        document
+            .getElementById(
+                "physicalNote"
+            )
+            .value
+            .trim();
+
+    const status =
+        document.getElementById(
+            "physicalStatus"
         );
 
-    if(adminClicks>=7){
 
-        adminClicks=0;
+    if(
+        !name ||
+        !contact ||
+        !address
+    ){
+
+        status.textContent =
+            "Please complete the required fields.";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "Submitting...";
+
+
+    try{
+
+        await window.firestore.addDoc(
+
+            window.firestore.collection(
+                window.db,
+                "myGwen",
+                "physicalTickets"
+            ),
+
+            {
+
+                name,
+
+                contact,
+
+                address,
+
+                note,
+
+                createdAt:
+                    window.firestore.serverTimestamp(),
+
+                status:
+                    "pending"
+
+            }
+
+        );
+
 
         document
             .getElementById(
-                "adminPasswordModal"
+                "physicalName"
             )
-            .classList
-            .add("show");
+            .value = "";
 
-        setTimeout(
-            () => {
+        document
+            .getElementById(
+                "physicalContact"
+            )
+            .value = "";
 
-                document
-                    .getElementById(
-                        "adminPassword"
-                    )
-                    .focus();
+        document
+            .getElementById(
+                "physicalAddress"
+            )
+            .value = "";
 
-            },
-            100
+        document
+            .getElementById(
+                "physicalNote"
+            )
+            .value = "";
+
+
+        status.textContent =
+            "Application submitted ♡";
+
+        showToast(
+            "Physical ticket application received."
         );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+            "Could not submit application.";
 
     }
 
@@ -4135,8 +4447,63 @@ function adminClick(){
 
 
 /* =========================================================
-   ADMIN LOGIN
+   ADMIN ACCESS
 ========================================================= */
+
+/*
+   Admin access is deliberately hidden inside the "Gwen"
+   brand in the top-left.
+*/
+
+document
+    .getElementById("brand")
+    .addEventListener(
+        "click",
+        ()=>{
+
+            adminClickCount++;
+
+            clearTimeout(
+                adminClickTimer
+            );
+
+            adminClickTimer =
+                setTimeout(
+                    ()=>{
+                        adminClickCount=0;
+                    },
+                    1500
+                );
+
+            /*
+                5 clicks opens admin password.
+            */
+
+            if(
+                adminClickCount >= 5
+            ){
+
+                adminClickCount = 0;
+
+                if(adminUnlocked){
+
+                    openModal(
+                        "adminModal"
+                    );
+
+                }else{
+
+                    openModal(
+                        "adminPinModal"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
 
 function verifyAdmin(){
 
@@ -4147,55 +4514,49 @@ function verifyAdmin(){
             )
             .value;
 
-    const error =
+
+    if(
+        password ===
+        ADMIN_PASSWORD
+    ){
+
+        adminUnlocked =
+            true;
+
+        closeModal(
+            "adminPinModal"
+        );
+
+        openModal(
+            "adminModal"
+        );
+
         document
             .getElementById(
-                "adminError"
-            );
+                "adminPassword"
+            )
+            .value = "";
 
-    if(password!==ADMIN_PASSWORD){
+        document
+            .getElementById(
+                "adminLoginStatus"
+            )
+            .textContent = "";
 
-        error.textContent=
+        loadAdminData();
+
+        showToast(
+            "Admin unlocked."
+        );
+
+    }else{
+
+        document
+            .getElementById(
+                "adminLoginStatus"
+            )
+            .textContent =
             "Incorrect password.";
-
-        return;
-
-    }
-
-    error.textContent="";
-
-    closeModal(
-        "adminPasswordModal"
-    );
-
-    document
-        .getElementById(
-            "adminPassword"
-        )
-        .value="";
-
-    document
-        .getElementById(
-            "adminModal"
-        )
-        .classList
-        .add("show");
-
-    renderAdmin();
-
-    if(window.listenMessages){
-
-        window.listenMessages(
-            renderMessages
-        );
-
-    }
-
-    if(window.listenTickets){
-
-        window.listenTickets(
-            renderTickets
-        );
 
     }
 
@@ -4206,165 +4567,175 @@ function verifyAdmin(){
    ADMIN TABS
 ========================================================= */
 
-function adminTab(id,button){
+function switchAdminTab(
+    pageId,
+    button
+){
 
     document
-        .querySelectorAll(".admin-section")
+        .querySelectorAll(
+            ".admin-page"
+        )
         .forEach(
-            x =>
-                x.classList.remove("active")
+            page=>
+                page.classList.remove(
+                    "active"
+                )
         );
 
     document
-        .querySelectorAll(".admin-tab")
+        .querySelectorAll(
+            ".admin-tab"
+        )
         .forEach(
-            x =>
-                x.classList.remove("active")
+            tab=>
+                tab.classList.remove(
+                    "active"
+                )
         );
 
     document
-        .getElementById(id)
-        .classList
-        .add("active");
+        .getElementById(
+            pageId
+        )
+        .classList.add(
+            "active"
+        );
 
-    button.classList.add("active");
+    button.classList.add(
+        "active"
+    );
+
+
+    if(
+        pageId ===
+        "messagesAdmin"
+    ){
+
+        loadMessages();
+
+    }
+
+    if(
+        pageId ===
+        "physicalAdmin"
+    ){
+
+        loadPhysicalTickets();
+
+    }
+
+    if(
+        pageId ===
+        "wishesAdmin"
+    ){
+
+        loadWishes();
+
+    }
 
 }
 
 
 /* =========================================================
-   ADMIN RENDER
+   ADMIN LETTER
 ========================================================= */
 
-function renderAdmin(){
-
-    renderGalleryAdmin();
-
-    renderGiftAdmin();
-
-    renderReasonAdmin();
+function loadAdminData(){
 
     document
         .getElementById(
             "adminLetter"
         )
         .value =
-        window.siteData.letter || "";
+        appData.letter || "";
+
+    renderAdminGallery();
+
+    renderAdminGifts();
+
+    renderAdminReasons();
 
 }
 
 
-/* =========================================================
-   SAVE LETTER
-========================================================= */
-
 async function saveLetter(){
 
-    const status =
-        document.getElementById(
-            "letterAdminStatus"
-        );
-
-    const letter =
+    const value =
         document
             .getElementById(
                 "adminLetter"
             )
             .value;
 
-    status.textContent=
-        "Saving...";
+    appData.letter =
+        value.trim();
 
-    window.siteData.letter =
-        letter;
+    saveLocalData();
 
-    try{
+    const saved =
+        await saveSettingsToFirestore();
 
-        await window.saveSiteContent();
+    renderLetter();
 
-        renderLetter();
-
-        status.textContent=
-            "Letter saved. ♡";
-
-        showToast(
-            "Letter updated."
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        status.textContent=
-            "Firebase isn't connected.";
-
-    }
+    showToast(
+        saved
+        ? "Letter saved."
+        : "Saved locally. Firebase unavailable."
+    );
 
 }
 
 
-/* =========================================================
-   REMOVE LETTER
-========================================================= */
+async function deleteLetter(){
 
-async function removeLetter(){
+    appData.letter =
+        "";
 
     document
         .getElementById(
             "adminLetter"
         )
-        .value="";
+        .value = "";
 
-    window.siteData.letter="";
+    saveLocalData();
 
-    try{
+    await saveSettingsToFirestore();
 
-        await window.saveSiteContent();
+    renderLetter();
 
-        renderLetter();
-
-        document
-            .getElementById(
-                "letterAdminStatus"
-            )
-            .textContent=
-            "Letter removed.";
-
-    }catch(error){
-
-        console.error(error);
-
-    }
+    showToast(
+        "Letter removed."
+    );
 
 }
 
 
 /* =========================================================
-   PHOTO ADMIN
+   ADMIN PHOTOS
 ========================================================= */
 
-function renderGalleryAdmin(){
+function renderAdminGallery(){
 
     const list =
         document.getElementById(
-            "galleryAdminList"
+            "adminGalleryList"
         );
 
-    list.innerHTML="";
+    if(!list)
+        return;
 
-    const photos =
-        window.siteData.gallery || [];
+    list.innerHTML = "";
 
-    if(!photos.length){
+    if(
+        !appData.gallery ||
+        appData.gallery.length === 0
+    ){
 
-        list.innerHTML=`
+        list.innerHTML = `
 
-            <div class="admin-row">
-
-                <small>
-                    No photos added yet.
-                </small>
-
+            <div class="empty-admin">
+                No photos added yet.
             </div>
 
         `;
@@ -4373,65 +4744,49 @@ function renderGalleryAdmin(){
 
     }
 
-    photos.forEach(
-        (photo,index) => {
 
-            const row =
+    appData.gallery.forEach(
+        (url,index)=>{
+
+            const item =
                 document.createElement(
                     "div"
                 );
 
-            row.className=
-                "admin-row";
+            item.className =
+                "admin-item";
 
-            row.innerHTML=`
+            item.innerHTML = `
 
                 <img
-                    class="image-preview"
-                    src="${escapeHTML(
-                        photo.image
-                    )}"
-                    onerror="
-                        this.style.opacity='.3'
-                    "
+                    src="${escapeAttribute(url)}"
+                    alt=""
                 >
 
-                <div class="field">
+                <div class="admin-item-info">
 
-                    <label>
-                        Image URL
-                    </label>
+                    <strong>
+                        Photo ${index+1}
+                    </strong>
 
-                    <input
-                        value="${escapeHTML(
-                            photo.image
-                        )}"
-                        id="photo-${index}"
-                    >
+                    <small>
+                        ${escapeHTML(url)}
+                    </small>
 
                 </div>
 
-                <div class="admin-actions">
-
-                    <button
-                        class="primary"
-                        onclick="updateImage(${index})"
-                    >
-                        Save
-                    </button>
-
-                    <button
-                        class="delete"
-                        onclick="deleteImage(${index})"
-                    >
-                        Delete
-                    </button>
-
-                </div>
+                <button
+                    class="admin-btn danger"
+                    onclick="removePhoto(${index})"
+                >
+                    remove
+                </button>
 
             `;
 
-            list.appendChild(row);
+            list.appendChild(
+                item
+            );
 
         }
     );
@@ -4439,11 +4794,11 @@ function renderGalleryAdmin(){
 }
 
 
-async function addImage(){
+async function addPhotoURL(){
 
     const input =
         document.getElementById(
-            "newImageURL"
+            "photoURL"
         );
 
     const url =
@@ -4459,174 +4814,263 @@ async function addImage(){
 
     }
 
-    window.siteData.gallery =
-        window.siteData.gallery || [];
 
-    window.siteData.gallery.push({
-        image:url
-    });
+    appData.gallery.push(
+        url
+    );
 
-    try{
+    input.value = "";
 
-        await window.saveSiteContent();
+    saveLocalData();
 
-        input.value="";
+    await saveSettingsToFirestore();
 
-        renderGallery();
+    renderGallery();
 
-        renderGalleryAdmin();
+    renderAdminGallery();
 
-        showToast(
-            "Photo added. ♡"
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        showToast(
-            "Firebase isn't connected."
-        );
-
-    }
+    showToast(
+        "Photo added."
+    );
 
 }
 
 
-async function updateImage(index){
+async function uploadPhoto(){
 
-    const input =
+    const fileInput =
         document.getElementById(
-            "photo-"+index
+            "photoFile"
         );
 
-    const url =
-        input.value.trim();
+    const file =
+        fileInput.files[0];
 
-    if(!url)
+    if(!file){
+
+        showToast(
+            "Choose a photo first."
+        );
+
         return;
 
-    window.siteData.gallery[index].image =
-        url;
+    }
+
+
+    if(!window.firebaseReady){
+
+        showToast(
+            "Firebase is not ready."
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "Uploading photo..."
+    );
+
 
     try{
 
-        await window.saveSiteContent();
+        const safeName =
+            file.name
+                .replace(
+                    /[^a-zA-Z0-9._-]/g,
+                    "_"
+                );
+
+        const path =
+            "myGwen/gallery/" +
+            Date.now() +
+            "_" +
+            safeName;
+
+
+        const storageRef =
+            window.firebaseStorage.ref(
+                window.storage,
+                path
+            );
+
+
+        await window.firebaseStorage.uploadBytes(
+            storageRef,
+            file
+        );
+
+
+        const url =
+            await window.firebaseStorage.getDownloadURL(
+                storageRef
+            );
+
+
+        appData.gallery.push(
+            url
+        );
+
+        saveLocalData();
+
+        await saveSettingsToFirestore();
+
+        fileInput.value = "";
 
         renderGallery();
 
-        renderGalleryAdmin();
+        renderAdminGallery();
 
         showToast(
-            "Photo updated."
+            "Photo uploaded."
         );
+
 
     }catch(error){
 
         console.error(error);
+
+        showToast(
+            "Upload failed."
+        );
 
     }
 
 }
 
 
-async function deleteImage(index){
+async function removePhoto(index){
 
     if(
         !confirm(
-            "Remove this photo?"
+            "Remove this photo from the gallery?"
         )
-    )
+    ){
+
         return;
 
-    window.siteData.gallery.splice(
+    }
+
+
+    appData.gallery.splice(
         index,
         1
     );
 
-    try{
+    saveLocalData();
 
-        await window.saveSiteContent();
+    await saveSettingsToFirestore();
 
-        renderGallery();
+    renderGallery();
 
-        renderGalleryAdmin();
+    renderAdminGallery();
 
-        showToast(
-            "Photo removed."
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-    }
+    showToast(
+        "Photo removed."
+    );
 
 }
 
 
 /* =========================================================
-   GIFT ADMIN
+   ADMIN GIFTS
 ========================================================= */
 
-function renderGiftAdmin(){
+function renderAdminGifts(){
 
-    const list =
+    const container =
         document.getElementById(
             "giftAdminList"
         );
 
-    list.innerHTML="";
+    if(!container)
+        return;
 
-    const gifts =
-        window.siteData.gifts || [];
+    container.innerHTML = "";
 
-    gifts.forEach(
-        (gift,index) => {
 
-            list.innerHTML += `
+    appData.gifts.forEach(
+        (gift,index)=>{
 
-                <div
-                    class="admin-row"
-                    style="margin-bottom:10px"
-                >
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "glass";
+
+            box.style.padding =
+                "20px";
+
+            box.style.borderRadius =
+                "18px";
+
+            box.style.marginBottom =
+                "12px";
+
+
+            box.innerHTML = `
+
+                <div class="form-grid">
 
                     <div class="field">
 
                         <label>
-                            Gift ${index+1} title
+                            icon
                         </label>
 
                         <input
-                            id="gift-title-${index}"
-                            value="${escapeHTML(
-                                gift.title || ""
-                            )}"
+                            id="giftIcon${index}"
+                            value="${escapeAttribute(gift.icon)}"
                         >
 
                     </div>
 
-                    <div
-                        class="field"
-                        style="margin-top:10px"
-                    >
+                    <div class="field">
 
                         <label>
-                            Gift message
+                            title
+                        </label>
+
+                        <input
+                            id="giftTitle${index}"
+                            value="${escapeAttribute(gift.title)}"
+                        >
+
+                    </div>
+
+                    <div class="field full">
+
+                        <label>
+                            text
                         </label>
 
                         <textarea
-                            id="gift-text-${index}"
-                            style="min-height:80px"
-                        >${escapeHTML(
-                            gift.text || ""
-                        )}</textarea>
+                            id="giftText${index}"
+                        >${escapeHTML(gift.text)}</textarea>
 
                     </div>
 
                 </div>
 
+                <div class="admin-actions">
+
+                    <button
+                        class="admin-btn primary"
+                        onclick="saveGift(${index})"
+                    >
+                        save
+                    </button>
+
+                </div>
+
             `;
+
+            container.appendChild(
+                box
+            );
 
         }
     );
@@ -4634,375 +5078,546 @@ function renderGiftAdmin(){
 }
 
 
-async function saveGifts(){
+async function saveGift(index){
 
-    const gifts =
-        window.siteData.gifts || [];
-
-    gifts.forEach(
-        (gift,index) => {
-
-            gift.title =
-                document
-                    .getElementById(
-                        "gift-title-"+index
-                    )
-                    .value;
-
-            gift.text =
-                document
-                    .getElementById(
-                        "gift-text-"+index
-                    )
-                    .value;
-
-        }
-    );
-
-    try{
-
-        await window.saveSiteContent();
-
-        renderGifts();
-
+    appData.gifts[index].icon =
         document
             .getElementById(
-                "giftStatus"
+                "giftIcon"+index
             )
-            .textContent=
-            "Gifts saved. ♡";
+            .value;
 
-        showToast(
-            "Gifts updated."
-        );
+    appData.gifts[index].title =
+        document
+            .getElementById(
+                "giftTitle"+index
+            )
+            .value;
 
-    }catch(error){
+    appData.gifts[index].text =
+        document
+            .getElementById(
+                "giftText"+index
+            )
+            .value;
 
-        console.error(error);
+    saveLocalData();
 
-    }
+    await saveSettingsToFirestore();
+
+    renderGifts();
+
+    showToast(
+        "Gift updated."
+    );
 
 }
 
 
 /* =========================================================
-   REASON ADMIN
+   ADMIN REASONS
 ========================================================= */
 
-function renderReasonAdmin(){
+function renderAdminReasons(){
 
-    const list =
+    const input =
         document.getElementById(
-            "reasonAdminList"
+            "adminReasons"
         );
 
-    list.innerHTML="";
+    if(!input)
+        return;
 
-    const reasons =
-        window.siteData.reasons || [];
-
-    reasons.forEach(
-        (reason,index) => {
-
-            list.innerHTML += `
-
-                <div
-                    class="admin-row"
-                    style="margin-bottom:8px"
-                >
-
-                    <div
-                        style="
-                            display:flex;
-                            gap:8px;
-                        "
-                    >
-
-                        <input
-                            id="reason-${index}"
-                            value="${escapeHTML(
-                                reason
-                            )}"
-                            style="
-                                flex:1;
-                                width:100%;
-                                padding:12px;
-                                border-radius:12px;
-                                border:1px solid var(--line);
-                                background:rgba(255,255,255,.03);
-                                color:white;
-                                outline:none;
-                            "
-                        >
-
-                        <button
-                            class="delete"
-                            onclick="deleteReason(${index})"
-                        >
-                            ×
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-}
-
-
-function addReasonField(){
-
-    window.siteData.reasons =
-        window.siteData.reasons || [];
-
-    window.siteData.reasons.push(
-        "New reason..."
-    );
-
-    renderReasonAdmin();
-
-}
-
-
-function deleteReason(index){
-
-    window.siteData.reasons.splice(
-        index,
-        1
-    );
-
-    renderReasonAdmin();
+    input.value =
+        appData.reasons.join(
+            "\n"
+        );
 
 }
 
 
 async function saveReasons(){
 
-    const inputs =
-        document.querySelectorAll(
-            '[id^="reason-"]'
-        );
+    const value =
+        document
+            .getElementById(
+                "adminReasons"
+            )
+            .value;
 
-    const reasons=[];
+    appData.reasons =
+        value
+            .split("\n")
+            .map(
+                line=>line.trim()
+            )
+            .filter(Boolean);
 
-    inputs.forEach(
-        input => {
 
-            if(
-                input.value.trim()
-            ){
+    saveLocalData();
 
-                reasons.push(
-                    input.value.trim()
-                );
+    await saveSettingsToFirestore();
 
-            }
+    renderReasons();
 
-        }
+    showToast(
+        "Reasons updated."
     );
 
-    window.siteData.reasons =
-        reasons;
+}
+
+
+/* =========================================================
+   ADMIN MESSAGES
+========================================================= */
+
+async function loadMessages(){
+
+    const container =
+        document.getElementById(
+            "messagesList"
+        );
+
+    if(!container)
+        return;
+
+    container.innerHTML =
+        `<div class="empty-admin">
+            Loading messages...
+        </div>`;
+
 
     try{
 
-        await window.saveSiteContent();
+        const snap =
+            await window.firestore.getDocs(
 
-        renderReasons();
+                window.firestore.query(
 
-        document
-            .getElementById(
-                "reasonStatus"
-            )
-            .textContent=
-            "Reasons saved. ♡";
+                    window.firestore.collection(
+                        window.db,
+                        "myGwen",
+                        "messages"
+                    ),
 
-        showToast(
-            "Reasons updated."
+                    window.firestore.orderBy(
+                        "createdAt",
+                        "desc"
+                    )
+
+                )
+
+            );
+
+
+        container.innerHTML = "";
+
+
+        if(snap.empty){
+
+            container.innerHTML =
+                `<div class="empty-admin">
+                    No messages yet.
+                </div>`;
+
+            return;
+
+        }
+
+
+        snap.forEach(
+            docSnap=>{
+
+                const data =
+                    docSnap.data();
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "message-item";
+
+                item.innerHTML = `
+
+                    <div class="message-top">
+
+                        <div class="message-name">
+                            ${escapeHTML(
+                                data.name || "Anonymous"
+                            )}
+                        </div>
+
+                        <div class="message-date">
+                            ${formatTimestamp(
+                                data.createdAt
+                            )}
+                        </div>
+
+                    </div>
+
+                    <div style="
+                        color:#777;
+                        font-size:10px;
+                        margin-top:4px;
+                    ">
+                        ${escapeHTML(
+                            data.relation || ""
+                        )}
+                    </div>
+
+                    <div class="message-body">
+                        ${escapeHTML(
+                            data.message || ""
+                        )}
+                    </div>
+
+                `;
+
+                container.appendChild(
+                    item
+                );
+
+            }
         );
+
 
     }catch(error){
 
         console.error(error);
 
+        container.innerHTML =
+            `<div class="empty-admin">
+                Could not load messages.
+            </div>`;
+
     }
 
 }
 
 
 /* =========================================================
-   MESSAGES ADMIN
+   ADMIN PHYSICAL TICKETS
 ========================================================= */
 
-function renderMessages(items){
+async function loadPhysicalTickets(){
 
-    const list =
+    const container =
         document.getElementById(
-            "messagesList"
+            "physicalList"
         );
 
-    if(!items.length){
+    container.innerHTML =
+        `<div class="empty-admin">
+            Loading applications...
+        </div>`;
 
-        list.innerHTML=`
 
-            <div class="admin-row">
+    try{
 
-                <small>
-                    No messages yet.
-                </small>
+        const snap =
+            await window.firestore.getDocs(
 
-            </div>
+                window.firestore.query(
 
-        `;
+                    window.firestore.collection(
+                        window.db,
+                        "myGwen",
+                        "physicalTickets"
+                    ),
 
-        return;
+                    window.firestore.orderBy(
+                        "createdAt",
+                        "desc"
+                    )
 
-    }
+                )
 
-    list.innerHTML="";
+            );
 
-    items.forEach(
-        item => {
 
-            const div =
-                document.createElement(
-                    "div"
-                );
+        container.innerHTML = "";
 
-            div.className=
-                "admin-message";
 
-            div.innerHTML=`
+        if(snap.empty){
 
-                <strong>
-                    ${escapeHTML(
-                        item.name || "Anonymous"
-                    )}
-                </strong>
+            container.innerHTML =
+                `<div class="empty-admin">
+                    No physical-ticket applications.
+                </div>`;
 
-                <small>
-                    · ${escapeHTML(
-                        item.mood || "♡"
-                    )}
-                </small>
-
-                <p>
-                    ${escapeHTML(
-                        item.message || ""
-                    )}
-                </p>
-
-            `;
-
-            list.appendChild(div);
+            return;
 
         }
-    );
-
-}
 
 
-/* =========================================================
-   TICKET ADMIN
-========================================================= */
+        snap.forEach(
+            docSnap=>{
 
-function renderTickets(items){
+                const data =
+                    docSnap.data();
 
-    const list =
-        document.getElementById(
-            "ticketsList"
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "message-item";
+
+                item.innerHTML = `
+
+                    <div class="message-top">
+
+                        <div class="message-name">
+                            ${escapeHTML(
+                                data.name
+                            )}
+                        </div>
+
+                        <div class="message-date">
+                            ${formatTimestamp(
+                                data.createdAt
+                            )}
+                        </div>
+
+                    </div>
+
+                    <div class="message-body">
+
+                        <strong>
+                            Contact:
+                        </strong>
+                        ${escapeHTML(
+                            data.contact || ""
+                        )}
+
+                        <br><br>
+
+                        <strong>
+                            Address:
+                        </strong>
+                        ${escapeHTML(
+                            data.address || ""
+                        )}
+
+                        <br><br>
+
+                        <strong>
+                            Note:
+                        </strong>
+                        ${escapeHTML(
+                            data.note || "—"
+                        )}
+
+                        <br><br>
+
+                        <strong>
+                            Status:
+                        </strong>
+                        ${escapeHTML(
+                            data.status || "pending"
+                        )}
+
+                    </div>
+
+                `;
+
+                container.appendChild(
+                    item
+                );
+
+            }
         );
 
-    if(!items.length){
 
-        list.innerHTML=`
+    }catch(error){
 
-            <div class="admin-row">
+        console.error(error);
 
-                <small>
-                    No physical ticket applications yet.
-                </small>
-
-            </div>
-
-        `;
-
-        return;
+        container.innerHTML =
+            `<div class="empty-admin">
+                Could not load ticket applications.
+            </div>`;
 
     }
-
-    list.innerHTML="";
-
-    items.forEach(
-        item => {
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-            div.className=
-                "admin-message";
-
-            div.innerHTML=`
-
-                <strong>
-                    ${escapeHTML(
-                        item.name || ""
-                    )}
-                </strong>
-
-                <p>
-                    ${escapeHTML(
-                        item.address || ""
-                    )}
-                </p>
-
-                <small>
-                    Contact:
-                    ${escapeHTML(
-                        item.contact || ""
-                    )}
-                </small>
-
-            `;
-
-            list.appendChild(div);
-
-        }
-    );
 
 }
 
 
 /* =========================================================
-   MODAL
+   ADMIN WISHES
 ========================================================= */
+
+async function loadWishes(){
+
+    const container =
+        document.getElementById(
+            "wishesList"
+        );
+
+    container.innerHTML =
+        `<div class="empty-admin">
+            Loading wishes...
+        </div>`;
+
+
+    try{
+
+        const snap =
+            await window.firestore.getDocs(
+
+                window.firestore.query(
+
+                    window.firestore.collection(
+                        window.db,
+                        "myGwen",
+                        "wishes",
+                        "items"
+                    ),
+
+                    window.firestore.orderBy(
+                        "createdAt",
+                        "desc"
+                    )
+
+                )
+
+            );
+
+
+        container.innerHTML = "";
+
+
+        if(snap.empty){
+
+            container.innerHTML =
+                `<div class="empty-admin">
+                    No wishes yet.
+                </div>`;
+
+            return;
+
+        }
+
+
+        snap.forEach(
+            docSnap=>{
+
+                const data =
+                    docSnap.data();
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "message-item";
+
+                item.innerHTML = `
+
+                    <div class="message-top">
+
+                        <div class="message-name">
+
+                            ${escapeHTML(
+                                data.mood || "♡"
+                            )}
+
+                            ${escapeHTML(
+                                data.name ||
+                                "Anonymous"
+                            )}
+
+                        </div>
+
+                        <div class="message-date">
+                            ${formatTimestamp(
+                                data.createdAt
+                            )}
+                        </div>
+
+                    </div>
+
+                    <div class="message-body">
+                        ${escapeHTML(
+                            data.text || ""
+                        )}
+                    </div>
+
+                `;
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            `<div class="empty-admin">
+                Could not load wishes.
+            </div>`;
+
+    }
+
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add(
+            "open"
+        );
+
+}
+
 
 function closeModal(id){
 
     document
         .getElementById(id)
-        .classList
-        .remove("show");
+        .classList.remove(
+            "open"
+        );
 
 }
+
+
+/* click outside */
 
 document
     .querySelectorAll(".modal")
     .forEach(
-        modal => {
+        modal=>{
 
             modal.addEventListener(
                 "click",
-                e => {
+                event=>{
 
-                    if(e.target===modal)
-                        modal.classList.remove("show");
+                    if(
+                        event.target ===
+                        modal
+                    ){
+
+                        modal.classList.remove(
+                            "open"
+                        );
+
+                    }
 
                 }
             );
@@ -5012,36 +5627,22 @@ document
 
 
 /* =========================================================
-   ADMIN PASSWORD ENTER
+   NAV
 ========================================================= */
 
-document
-    .getElementById(
-        "adminPassword"
-    )
-    .addEventListener(
-        "keydown",
-        e => {
+function scrollToSection(id){
 
-            if(e.key==="Enter")
-                verifyAdmin();
+    const element =
+        document.getElementById(id);
 
-        }
-    );
+    if(element){
 
+        element.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    }
 
 }
 
@@ -5052,6 +5653,7 @@ function escapeHTML(value){
 
 let toastTimer;
 
+
 function showToast(message){
 
     const toast =
@@ -5059,38 +5661,167 @@ function showToast(message){
             "toast"
         );
 
-    toast.textContent=
+    toast.textContent =
         message;
 
-    toast.classList.add("show");
+    toast.classList.add(
+        "show"
+    );
 
-    clearTimeout(toastTimer);
+    clearTimeout(
+        toastTimer
+    );
 
     toastTimer =
         setTimeout(
-            () => {
-
-                toast.classList.remove("show");
-
+            ()=>{
+                toast.classList.remove(
+                    "show"
+                );
             },
-            2500
+            2400
         );
 
 }
 
 
 /* =========================================================
-   ADMIN ENTER AFTER FIREBASE LOAD
+   UTILITY
 ========================================================= */
 
-setTimeout(
-    () => {
+function escapeHTML(value){
 
-        if(window.renderAdmin)
-            renderAdmin();
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(value){
+
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+function formatTimestamp(timestamp){
+
+    if(
+        !timestamp ||
+        !timestamp.toDate
+    ){
+
+        return "recently";
+
+    }
+
+    try{
+
+        return timestamp
+            .toDate()
+            .toLocaleString(
+                "en-IN",
+                {
+                    day:"2-digit",
+                    month:"short",
+                    year:"numeric"
+                }
+            );
+
+    }catch{
+
+        return "recently";
+
+    }
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+loadLocalData();
+
+renderAll();
+
+
+/*
+   Wait for Firebase initialization,
+   then pull the latest Firestore data.
+*/
+
+window.addEventListener(
+    "firebase-ready",
+    ()=>{
+
+        loadFirestoreData();
+
+    }
+);
+
+
+/*
+   Firebase may already have loaded before
+   this listener was attached.
+*/
+
+if(window.firebaseReady){
+
+    loadFirestoreData();
+
+}
+
+
+/* =========================================================
+   GENTLE BACKGROUND HEARTS
+========================================================= */
+
+setInterval(
+    ()=>{
+
+        if(
+            document
+                .getElementById("app")
+                .classList
+                .contains("visible")
+        ){
+
+            if(
+                Math.random() > .35
+            ){
+
+                createHeart();
+
+            }
+
+        }
 
     },
-    1200
+    4500
 );
 
 </script>
